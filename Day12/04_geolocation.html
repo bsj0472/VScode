@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>goe location</title>
+
+        <script>
+            function clickBtn(){
+                //현재 내 위치 정보 얻어오기
+                navigator.geolocation.getCurrentPosition( function(position){
+
+                    var lat= position.coords.latitude;
+                    var lng= position.coords.longitude;
+
+                    document.getElementById('tt').innerHTML= lat+", "+lng;
+                } );
+            }
+
+            function clickBtn2(){
+                id= navigator.geolocation.watchPosition(function(pos){
+                    lat= pos.coords.latitude;
+                    lng= pos.coords.longitude;
+                    document.getElementById('tt').innerHTML= lat+", "+lng;
+                });
+            }
+
+            function clickBtn3(){
+                navigator.geolocation.clearWatch(id);
+            }
+
+        </script>
+    </head>
+    <body>
+
+        <button onclick="clickBtn()">my location</button>
+        <h3 id="tt">location</h3>
+
+        <button onclick="clickBtn2()">위치정보 자동 업데이트 watch</button>
+        <button onclick="clickBtn3()">위치정보 자동 업데이트 종료 clear</button>
+        
+    </body>
+</html>

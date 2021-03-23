@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>input element test</title>
+    </head>
+
+    <body>
+        
+        <!-- 기본 텍스트타입 입력  한줄짜리 입력 -->
+        <input type="text" size="40" name="in01"> <br>
+        <input type="password" name="in02"> <br>
+        <hr>
+        <!-- 라디오 버튼. 같은 name값을 가진 것 끼리 그룹화가됨 -->
+        라디오버튼 :
+        <input type="radio" name="rg" checked="checked">aaa
+        <input type="radio" name="rg">bbb
+
+        <br>
+
+        <!-- <label>을 사용하면 글씨를 눌렀을때 선택이 되도록 할 수 있음. -->
+        <!-- id 속성과 for속성 이용 -->
+        <input type="radio" name="rg2" value="male" id="rb1">
+        <label for="rb1">Male</label> 
+
+        <input type="radio" name="rg2" value="female" id="rb2" checked>
+        <label for="rb2">Female</label> 
+
+        <!-- php에서는 선택된 라디오 input의 value값이 전달됨 (키는 : rg2) -->
+        <br>
+        <hr>
+        <!-- <label>의 for를 사용하기 귀찮다면.. <label>요소안에 <input>을 넣으면 자동 연결됨 -->
+        <label><input type="checkbox" name="fruits[]" value="apple"> Apple</label>
+        <label><input type="checkbox" name="fruits[]" value="banana"> Banana</label>
+        <label><input type="checkbox" name="fruits[]" value="orange"> Orange</label>
+        <!-- chechbox는 멀티초이스이기에 값이 여러개일 수 있음. 그래서 name속성의 값에 배열 []표시 필요함 -->
+
+        <br>
+
+        <!-- submit, reset : <form>안에서만 동작함-->
+        <input type="submit" value="전송">
+        <input type="reset" value="취소">
+
+        <br>
+        <!-- type= "button" -->
+        <input type="button" value="중복체크" onclick="alert('clicked')">
+
+        <!-- <button>요소 -->
+        <!-- <form>요소안에서는  <button>요소를 사용하면 전송오류가 발생할 수도 있음. <form>요소 안에서 버튼이 필요하면 input type으로 처리 권장 -->
+            <button onclick="alert('중복된 id입니다.')">중복체크</button>
+
+        <!-- 이미지버튼 -->
+        <button onclick="alert()"><img src="./iconfinder_heart_2561448.png" ></button>
+
+        <!-- <input>요소 type= "image" : <form> 요소 안에서 submit과 같은 목적으로 사용-->
+        <input type="image" src="./iconfinder_heart_2561448.png" onclick="alert()">
+
+        <br>
+        <hr>
+        <br>
+
+        <!-- 여러줄 입력  -->
+        여러줄 입력 : <br>
+        <textarea name="msg" id="" cols="40" rows="5"></textarea>
+
+        <hr>
+        <!-- 콤보박스 : <select> -->
+            <!-- 서버에서 식별할 식별자 값은 select 요소의 name속성, 값은 option 요소의 value속성 -->
+        <select name="sel">
+            <option value="aa">AA</option>
+            <option value="bb">BB</option>
+            <option value="cc">CC</option>
+        </select>
+
+        <!-- 옵션항목들 그룹화 : optionGroup -->
+        <select name="sel2">
+            <optgroup label="text">
+                <option value="a">aaa</option>
+                <option value="b">bbb</option>
+                <option value="c">ccc</option>
+            </optgroup>
+        
+            <optgroup label="num">
+                <option value="1">111</option>
+                <option value="2">222</option>
+                <option value="3">333</option>
+            </optgroup>
+        </select>
+
+        <br>
+        <hr>
+        <br>
+
+        <!-- fieldset : 영역을 그룹 (테두리선과 라벨적용) -->
+        <fieldset>
+            <legend>필드셋의 제목</legend>
+            <label>이름 : <input type="text" name="name"></label>
+            <br>
+            <label>주소 : <input type="text" name="addr"></label>
+        </fieldset>
+
+    </body>
+</html>

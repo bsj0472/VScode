@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web worker</title>
+    </head>
+    <body>
+        <!-- 무한반복문을 실행하면 화면에 그리는 작업도 못함 -->
+        <button onclick="clickBtn()">무한반복!</button>
+        <hr>
+        <h2 id="hh">결과</h2>
+        <hr>
+        <button onclick="aaa()">start Worker</button>
+        <button onclick="bbb()">stop Worker</button>
+
+        <button>button</button>
+
+        <script>
+
+            // 웹워커는 웹서버에서만 동작함(dothmome같은 곳에서 실행해야만 함)
+            var w;
+            function aaa(){
+                //Worker객체 생성(Java의 Thread와 같은 역할)
+                if(w==undefined){
+                    w= new Worker('./worker.js');
+
+                    //Worker가 postMessage()로 보낸 값을 받기
+                    w.onmessage= function(event){
+                        document.getElementById('hh').innerHTML= event.data;
+                    }
+                }
+                
+            }
+
+            function bbb(){
+                w.terminate();
+                w= undefined;
+            }
+
+
+
+
+            function clickBtn(){
+
+                var n=0;
+                while(true){
+                    n++;
+                    document.getElementById('hh').innerHTML= n;
+                }
+
+            }
+        </script>
+    </body>
+</html>

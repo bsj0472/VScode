@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>Math</title>
+    <script>
+        //4.Math
+
+        //Math는 객체를 생성하지 않고(new 하지 않고)사용 [일종의 static 메소드 사용]
+
+        var n=3.14;
+        document.write(Math.floor(n)+"<br>"); //소수점 이하 버리기
+        document.write(Math.round(n)+"<br>"); //반올림
+        document.write(Math.ceil(n)+"<br>"); //소수점 이하 올리기
+
+        //랜덤값 만들어 내기
+        var r=Math.random(); //0.0~1.0 사이의 값 제공
+        document.write(r +"<br>");
+
+        //0~9사이를 얻어내고 싶다면
+        var r= Math.floor(Math.random()*10);
+        document.write(r +"<br>");
+
+        //0~14
+        var r= Math.floor(Math.random()*15);
+        document.write(r +"<br>");
+
+        //5~15
+        var r= Math.floor(Math.random()*11+5);
+        document.write(r +"<br>");
+
+        var r= ((Math.random()*11)+5).toFixed(); //Number객체의 메소드
+        document.write(r+"<br>");
+        document.write(typeof(r)+ "<br>");//string
+
+
+
+
+    </script>
+    <body>
+        
+    </body>
+</html>

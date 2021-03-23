@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Storage</title>
+    </head>
+    <body>
+
+        <h3 id="aa"></h3>
+        <hr>
+        <h3 id="bb"></h3>
+        <a href="http://www.naver.com">naver</a>
+
+        <script>
+            // 웹 스토리지 : 웹문서(html)가 데이터를 client의 컴퓨터에 저장 할 수 있는 기법(일종의 쿠키(4kB)) --- 웹스토리지는 5MB
+
+            //웹 스토리지 .. 2가지 저장소
+            //1. localStorage.. 같은 도메인은 같은 저장소 공유 (브라우저가 닫히더라고 정보를 저장하고 있음.)
+            //예제) 페이지 방문 횟수 저장.
+            if( !localStorage.cnt ){
+                localStorage.cnt=0;
+            }            
+
+            //기존의 cnt값에 1 증가
+            localStorage.cnt= parseInt(localStorage.cnt) + 1;
+
+            document.getElementById('aa').innerHTML= localStorage.cnt +"번째 방문입니다.";
+
+            //2. sessionStorage.. 같은 도메인은 같은 저장소 공유 (브라우저가 닫히면 정보 소실)
+            if( !sessionStorage.cnt ){
+                sessionStorage.cnt=0;
+            }
+
+            //기존의 cnt값에 1 증가
+            sessionStorage.cnt= parseInt(sessionStorage.cnt) + 1;
+            document.getElementById('bb').innerHTML= sessionStorage.cnt +"번째 방문입니다.";
+
+
+        </script>
+        
+    </body>
+</html>

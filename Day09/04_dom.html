@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM</title>
+        
+        <script>
+
+            //DOM(Document Object Medel), BOM(Brower Object Model)
+
+            //1. DOM
+            // DOM트리의 가지에 있는 요소 하나하나를 node라고 함
+            // node의 종류 : element node, attribute node, text node
+            // 노드간의 관계 : parent node, child node, sibling node <-- 이 관계를 이용해서 요소 제어           
+
+        </script>
+
+    </head>
+    <body>
+
+        <!-- node 타입 확인하기 -->
+        <p id="p1"><a href="" target="">bbb</a></p>
+
+        <script>
+
+            // id=p1인 p요소
+            var e= document.getElementById('p1');
+            //alert( e.nodeType +", "+ e.nodeName); //요소노드 : 1
+
+            //p요소의 속성
+            var attrs= e.attributes;
+            //alert( attrs[0].nodeType +", "+attrs[0].nodeName); //속성노드 : 2            
+            //alert(attrs[0].nodeValue);//속성값
+
+            //p요소의 첫번째 자식 노드 : a요소
+            var e= e.firstChild;
+            //alert(e.nodeType+":"+e.nodeName);
+
+            //a요소의 속성
+            var attrs= e.attributes;
+            //alert(attrs[0].nodeType+":"+attrs[0].nodeName);
+            //alert(attrs[1].nodeType+":"+attrs[1].nodeName);
+
+            //a요소의 첫번째 자식노드 : 텍스트
+            var t= e.firstChild;
+            //alert(t.nodeType+":"+t.nodeName); //텍스트노드 : 3
+            //alert("텍스트값 : " + t.data);//text의 값
+        </script>
+
+        <hr>
+
+        <!-- 자식노드 제어하기 -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+            <li>ddd</li>
+        </ul>
+
+        <ul>
+            <li>kkk</li>
+            <li>sss</li>
+        </ul>
+
+        <script>
+            // li 요소 전체 개수
+            var items= document.getElementsByTagName('li');
+            //alert( items.length );
+
+            // 첫번째 ul 요소의 자식들중에 li요소의 개수
+            var list= document.getElementsByTagName('ul');
+            var items= list[0].getElementsByTagName('li');
+            //alert(items.length);
+
+            //3번째 li의 텍스트노드 값 - ccc
+            //alert( items[2].firstChild.data  );
+
+            //ul요소의 자식 중 첫번째 요소의 텍스트노드 값과
+            //마지막 노드값 얻어오기
+
+            //alert( list[0].firstChild.nodeName );
+            //li요소가 첫자식으로 예상되지만 실제로는
+            //줄바꿈 엔터키가 텍스트노드로 추가됨
+
+            //요소노드중에서 첫자식
+            //alert( list[0].firstElementChild.nodeName);
+            //요소노드의 자식 텍스트노드의 값
+            //alert( list[0].firstElementChild.firstChild.data );
+            //alert( list[0].lastElementChild.textContent );
+
+        </script>
+
+        <!-- 형제 요소 찾아 제어하기 -->
+        <div>
+            <p>Fruits List</p>
+            <ul>
+                <li>apple</li>
+                <li>banana</li>
+                <li>orange</li>
+            </ul>
+        </div>
+        <hr>
+        <!-- 버튼을 클릭할때 clickBtn()함수를 발동하면서 -->
+        <!-- this키워드로 button요소객체 본인을 전달해줌 -->
+        <button onclick="clickBtn(this)">button</button>
+        <h3></h3>
+
+        <script>
+            function clickBtn(e){
+                var div= document.getElementsByTagName('div');
+
+                //div의 첫번째 자식요소 p 찾기
+                var p= div[0].firstElementChild;
+
+                //p요소 다음에 있는 ul요소 찾기
+                var ul= p.nextElementSibling;
+                //alert(ul.nodeName);
+                //alert(ul.childNodes.length);
+
+                //ul의 자식노드들 출력해보기
+                var str="";
+                for(var i=0; i<ul.childNodes.length; i++){
+                    str += ul.childNodes[i].nodeName+"\n";
+                }
+                //alert(str);
+
+                //결과값을 alert()다이얼로그 보여주니 짜증!
+                // 버튼의 다음에 h3요소를 넣고 그곳에 보여지도록
+
+                //이 함수의 파라미터로 전달된 button요소 e의 
+                //다음 형제요소가 h3요소
+                e.nextElementSibling.textContent= str;
+
+                e.nextElementSibling.textContent="<a href=''>NAVER</a>";
+                e.nextElementSibling.innerHTML="<a href=''>NAVER</a>";
+
+
+
+
+
+            }
+
+        </script>
+        
+    </body>
+</html>

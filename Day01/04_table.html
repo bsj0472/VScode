@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>table test</title>
+    </head>
+    <body>
+        
+        <table border="1">
+            <!-- 테이블 헤더 -->
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>Hello world</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>Nice to meet you</td>
+                 <!-- 각 행 (row)의 데이터 (셀) 개수가 다를 수도 있음 -->
+                 <td>20210304</td>
+            </tr>
+           
+            <hr>
+
+            <!-- 셀병합 -->
+            <table border="1">
+                <!-- 테이블 전체 제목(caption) -->
+                <caption>테이블 제목</caption>
+                <!-- 테이블 제목은 작성 위치와 상관없이 무조건 상단에 배치됨. 이게 싫으면 css로 조절가능함 -->
+                <tr>
+                    <!-- span이 동작하려면 비교할 수 있는 다른 줄 (row)가 존재해야함 -->
+                    <td rowspan="2">111</td>
+                    <td colspan="3">222</td>
+                    <td>333</td>
+                </tr>
+                <tr>
+                    <td>444</td>
+                    <td>555</td>
+                    <td>666666666</td>
+                </tr>
+            </table>
+
+        </table>
+
+        <hr>
+        <!-- 테이블의 <td> 요소안에 다른 요소들을 배치하기 -->
+            <table border="1"width="100%">
+                <tr>
+                    <td width= "30%"><a href="http://www.naver.com">naver</a></td>
+                    <td>
+                        <ul>
+                            <li>aaaa</li>
+                            <li>bbbb</li>
+                            <li>cccc</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>테이블안에 어떤 요소든 넣을 수 있음. 한글이면 자동 줄바꿈</p>
+                        <p>sdfasfsdlkjhsdkljhsdlkjhsadhjsadflkjhsda lkjhsdaflkjhsadlkjhsdkljhaslkjhdfkljhdasflkjhdh</p>
+                    </td>
+
+                    <td>
+                        <img src="./images/cafelatte.jpg" alt="cafelatte">
+                    </td>
+                </tr>
+            </table>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>flex-shrink</title>
+        <style>
+            .flex-container{
+                display: flex;
+            }
+            .flex-container>div{
+                background-color: dodgerblue;
+                color: white;
+                width: 100px;
+                margin: 10px;
+                text-align: center;
+                line-height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>The flex-shink</h1>
+        
+        <div class="flex-container">
+            <div>1</div>
+            <div>2</div>
+            <!-- 다른 요소에 비해 0만큼 줄어들겠다. 즉 줄어들지않게끔하기 -->
+            <div style="flex-shrink: 0;">3</div>
+            <div>4</div>
+            <div>5</div>
+            <!-- 다른 요소에 비해 1만큼 줄어들겠다. 남들과 1:1로 줄어들겠다. -->
+            <div style="flex-shrink: 1;">6</div>
+            <div>7</div>
+            <div>8</div>
+            <!-- 다른 요소에 비해 2만큼 줄어들겠다. 남들보다 2배더 줄어들겠다.  -->
+            <div style="flex-shrink: 2;">9</div>
+            <div>10</div>
+
+        </div>
+        
+    </body>
+</html>

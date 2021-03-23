@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Layout CSS test</title>
+
+        <style>
+            /* display 속성 */
+            #aa{display: inline;}
+            #aaa{display: inline; width: 300px;} /* 인라인 요소는 크기설정 불가*/
+            /* 인라인 처럼 옆으로 배치되면서 크기도 조절하고 싶다면 */
+            #aa{display: inline-block; width: 200px;}
+
+            /* 인라인요소를 블럭요소로 */
+            img{display: block;}
+
+            /* display: none값 적용 : 디스플레이를 하지 않음. 즉, 그려내지 않음. 자리차지 하지 않음(android의 gone과 같음) */
+            li{display: inline; margin-right: 20px;}
+            li#bb{display: none;}
+        </style>
+    </head>
+    
+
+    <body>
+        
+        <!-- display속성 -->
+        <p id="aa">Hello world</p>
+        <a href="#">Good day</a>
+        <strong>Good afternoon</strong>
+
+        <img src="./border.png" alt="border">
+
+        <!-- display : none 값 -->
+        <ul>
+            <li>aaa</li>
+            <li id="bb">bbb</li>
+            <li>ccc</li>
+
+        </ul>
+
+        <hr>
+
+        <!-- 블럭요소와 인라인요소를 같이 사용할 때 고려할 점 -->
+
+        <!-- 블럭요소안에 다른 블럭, 인라인 요소를 넣을 수 있음. -->
+        <div style="background-color: tomato; border: solid; padding: 5px;">
+            Nice <p>aaa</p> world
+        </div>
+
+        <!-- 인라인 요소안에 블럭요소를 넣을 수 없음(되긴하는데 이상해짐) -->
+        <span style="background-color: teal; border: solid; padding: 5px;">
+            Nice <p>aaa</p> world
+        </span>
+
+        <!-- 같은 p요소안에 또 p요소를 넣으면 이상해 짐 -->
+        <p style="background-color: gold; border: solid; padding: 5px;">
+            Nice <p>aaa</p> world
+        </p>
+
+        <!-- 같은 요소안에 같은 요소를 넣으면 이상해짐 -->
+        <h1 style="background-color:yellowgreen; border: solid; padding: 5px;">
+            Nice <h1>aaa</h1> world
+        </h1>
+
+        <hr>
+
+        
+        <!-- 요소의 위치를 지정하는 속성 -->
+        <!-- position속성!!!!!!!!!!!! -->
+        <div class="aaa">
+            <p id="one">block #1</p>
+            <p id="two">block #2</p>
+            <p id="three">block #3</p>
+        </div>
+
+        <style>
+            .aaa{
+                background-color: black;
+                /* 자식요소의 position:absolulte일때 부모좌상단을 기준으로 하려면  */
+                /* 이 부모요소의 position이 static이 아니면됨 */
+                position: relative ;
+                
+            }
+            #one{
+                background-color: cyan;
+                width: 200px;
+                height: 50px;
+            }
+            #two{
+                background-color:yellowgreen;
+                width: 200px;
+                height: 50px;
+
+                /* 요소의 위치를 지정하는 top, left, bottom, right 는 position 속성값이 static이 아닐때만 적용됨 */
+                position: static; /* 원래 놓여져야할 위치에 요소가 배치됨 : left,top같은 속성이 무시됨[default]*/
+                position: relative; /*원래 놓여져야할 위치를 기준으로 배치됨*/
+                position: absolute; /*문서의 좌상단을 기준으로 배치됨*/
+                /* absolute 는 기준점을 문서가 아니라 본인의 부모요소의 좌상단을 기준으로 바꿀수 있음 */
+                /* 기준점을 부모로 하고 싶다면 부모요소의 position속성값이 static이 아니여야함 */
+                position: fixed; /*브라우저 창(윈도우)를 기준으로 함*/
+                /* left: 50px;
+                top: 30px; */
+                right: 0px;
+                bottom: 0px;
+
+            }
+            #three{
+                background-color:rebeccapurple;
+                width: 200px;
+                height: 50px;
+            }
+            
+        </style>
+       
+    </body>
+ 

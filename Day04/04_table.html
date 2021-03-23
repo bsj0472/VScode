@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Table css test</title>
+
+    </head>
+
+    <body>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>이메일</th>
+            </tr>
+            <tr>
+                <td>김철수</td>
+                <td>chul@google.com</td>
+            </tr>
+            <tr>
+                <td>김영희</td>
+                <td>young@google.com</td>
+            </tr>
+            <tr>
+                <td>홍길동</td>
+                <td>hong@google.com</td>
+            </tr>
+            <tr>
+                <td>김수진</td>
+                <td>sugin@google.com</td>
+            </tr>
+            <!-- 내부 스타일 작성위치는 head영역을 권장하지만 body도 상관없음 -->
+            <style>
+                table{
+                    border: 2px solid;
+                    border-collapse: collapse;
+                    /* 텍스트/폰트관련 속성은 자식요소들에 영향을 줌 */
+                    text-align: center;
+                }
+
+                th, td{
+                    border: 1px solid; padding: 10px 5px;
+                }
+                th{background-color:green; color: white;}
+                /* 짝수 라인의 배경색 설정 */
+                tr:nth-child(2n){background-color: yellow;}
+
+                /* 각줄의 첫번째 컬룸요소 */
+                td:first-child{width: 40%;}
+
+                th{border-bottom: double red;}
+
+                /* table의 DOM tree  구조는 보이는 것과 다를 수 있음 */
+                /* 직접 만들지 않아도 자동으로  table의 자식요소로 tbody라는 녀석이 존재함 */
+                table>:nth-child(1){border: 10px solid blue;}
+
+                table tr{color: aqua;}
+                /* 테이블의 자식으로 tr을 찾으면 못찾음*/
+                table > tr{color: red;}
+            </style>
+
+        </table>
+    </body>
+</html>

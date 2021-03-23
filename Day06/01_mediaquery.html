@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>미디어 쿼리</title>
+
+        <!-- 미디어 쿼리 : 반응형웹을 위한 CSS의 스타일 선택적용 문법 : 2가지 방법이 있음-->
+
+        <!-- 방법1. @medai 키워드 이용 -->
+        <style>
+            #aa{
+                width: 320px;
+                height: 100px;
+                background-color: green;
+            }
+
+            /* 브라우저의 너비(창 크기)가 560px 이상이면 */
+            @media (min-width: 560px){ /*최소 560이상*/
+                #aa{
+                    width: 560px;
+                    height: 200px;
+                    background-color: rgb(165, 165, 125);
+                }
+            }
+
+        </style>
+
+        <!-- 방법2. media 속성을 이용 -->
+        <!-- 2.1 외부스타일시트 연결하면서 미디어쿼리 적용 -->
+        <link rel="stylesheet" href="./01_media.css" media="(min-width:680px) and (max-width:800px)">
+
+        <!-- 2.2 내부스타일스트 적용하면서 미디어쿼리 적용 -->
+        <style media="screen and (min-width: 800px)">
+            #aa{
+                width: 800px;
+                height: 300px;
+                background-color: aqua;
+            }            
+        </style>
+
+
+
+    </head>
+    <body>
+        <div id="aa"></div>
+    </body>
+</html>

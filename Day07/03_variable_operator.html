@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>operator test</title>
+
+        <script>
+
+            //같은 변수의 선언 가능. 같은 변수를 선언하면 그냥 변수사용으로 인식
+            var a=10;
+            var a; //같은 변수명이 있으면 var키워드 무시
+
+            document.write(a);
+            document.write("<br>");
+
+            //수치형 변수값
+            var b= 3.14;
+            document.write(b);
+            document.write("<br>");
+
+            b= 123.5e3; //지수표기법 123.5 * 10^3
+            document.write(b);
+            document.write("<br>");
+
+            b= 123.5e-3;
+            document.write(b);
+            document.write("<br>");
+
+            //연산자 중 특이점.
+            var c=1;
+            var d="1";
+            var e=1.0;
+
+            // 수치형과 문자형은 자료형은 다리지만 값이 같아서 true
+            document.write( c==d ); //true
+            document.write("<br>");
+            document.write( c==e); //true .. 둘다 수치형
+            document.write("<br>");
+
+            //값과 자료형 모두를 검사하는 비교연산자 ===
+            document.write(c===d);
+            document.write("<br>");
+            document.write(c===e);//true (정수,실수 모두 수치형)
+            document.write("<br>");
+
+            // 0 나눗셈 - 무한대[Infinity]
+            document.write( 10/0  );
+            document.write("<br>");
+
+            // 비트연사자 중 시프트연산자 >>>
+            var f=10;
+            document.write(f>>2);
+            document.write("<br>");
+            document.write(f>>>2);
+            document.write("<br>");
+            // 값이 양수일때는 차이 없음.
+            // 음수일때 부호까지 밀어버리는 차이
+            var g= -16;
+            document.write(g>>2);
+            document.write("<br>");
+            document.write(g>>>2);
+            document.write("<br>");
+
+            //표현가능한 최대값 출력해보기
+            document.write(Number.MAX_VALUE);
+            document.write("<br>");
+
+            //심지어 변수선언 키워드 없이도 변수 사용 가능함
+            k=5; //전역변수 선언방법
+            document.write(k);
+            document.write("<br>");
+
+            // in, delete 같은 연산자가 새로 생겼음. 추후에 다시 소개
+
+            document.write("<hr>");
+
+            // 수치형과 문자형의 변환
+            var h=1;
+            document.write(typeof(h));
+            document.write("<br>");
+
+            h= h+"";
+            //h= String(h);
+            document.write(typeof(h));
+            document.write("<br>");
+
+            h= parseInt("4");
+            document.write(typeof(h));
+            document.write("<br>");
+
+            //숫자가 아닌것을 파싱하려고 하면 : NaN (Not a Number)
+            document.write( parseInt("aa")  );
+            document.write("<br>");
+
+            //실수형 숫자는
+            document.write( parseInt("3.14") ); //3
+            document.write("<br>");
+
+            document.write( parseFloat("3.14") ); //parseDouble()함수는 없음
+            document.write("<br>");
+
+            document.write("<hr>");
+
+            // (수치형<->문자형 변환 why??)
+            // 사용자가 입력하는 값은 무조건 string형을 읽어짐.
+            var age= prompt("enter your age"); // 사용자 입력이 가능한 다이얼로그 실행
+            document.write( age + 3 ); //"20" + 3 ==> "203"
+            document.write("<br>");
+
+            age= parseInt(age);
+            document.write( age + 3 ); //23
+            document.write("<br>");
+
+            //  다이얼로그로 사용자 입력을 받는 게 불편하게 느껴짐.
+            // HTML의 사용자 입력요소 input 을 이용해서 값을 받고
+            // 프로그래밍으로 계산하여 출력하는 연습해보기
+
+
+        </script>
+
+    </head>
+    <body>
+        
+    </body>
+</html>

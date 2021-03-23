@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS 기초</title>
+        <meta charset="utf-8">
+
+        <!-- 웹문서 (HTML)에 스타일 적용하기(스타일을 지정하는 언어(문법): CSS) -->
+
+        <!-- 스타일 작성 영역 -->
+        <!-- <style>
+            /* 이 영역안에서는 CSS문법체계를 따름 */
+
+            /* 기본문법 - 선택자{속성:값;} */
+            /* 주요용어 : 선택자, 속성, 값 */
+
+            /* 선택자의 종류 */
+            /* 1. 타입(요소종류) 선택자 */
+            h2{color: red;}
+            p{color: blue; font-family:serif;}
+
+            /* 2. 전체 선택자 */
+            *{font-style: italic; color: rgb(184, 228, 28);}
+            /* 만약 같은 스타일 적용시 개별선택자가 우선적용됨(color적용되지 않음) */
+
+            /* 3. 아이디 선택자 */
+            #p1{color: green;}
+
+            /* 4. 클래스 선택자 */
+            .aa{color: violet;}
+
+            /* 5. 선택자 그룹 */
+            li, #p1, a{color: gray;}
+
+            /* 6. 자식, 자손 선택자 */
+            #ss>p{color: black;}
+            #ss p{color: lime;}
+
+            /* 아래 둘은 완전히 다름 */
+            p.aa{}  /*p요소중에서 class속성이 'aa' 인 것*/
+            p .aa{} /*p요소의 자손 중에서 class속성이  'aa'인 것*/
+
+            /* 6.1 자식/자손 복합구조 */
+            #kk ul.gg>li{background-color: aqua;}
+
+            /* 7. 속성 선택자 */
+            p[class]{font-size: 30px;} /* p요소 중에서 class라는 속성이 있는 녀석*/
+            div[id="ss"]{font-weight: bold;}
+
+            /* 8. 의사(pseudo-class) 선택자 */
+            /* :link, :visited 는 브라우저마다 동작여부가 다름 */
+            a:link{color: blue;}
+            a:visited{color: brown;}
+
+            a:hover{color: green; font-size: 24px;}
+            a:active{color: red;}
+            /* :hover 는 반드시 :visited 다음에 작성, :active는 :hover 다음에 작성해야 정상동작함 */
+
+            /* 몇번째 자식요소인지를 선택자로 활용 */
+            #kk ul li:first-child{color: salmon;}
+            #kk ul li:last-child{color:tomato;}
+            #kk ul li:nth-child(2){color:green;}
+
+            /* 수식을 이용한 n번째 자식요소 선택 */
+            /* 홀수번째 줄의 배경색 변경 */
+            table tr:nth-child(2n+1){background-color: indianred;}
+        </style> -->
+
+        <!-- CSS를 적용하는 3가지 방법 -->
+        <!-- 1.외부 스타일 시트 -->
+        <!-- 2.내부 스타일 시트 -->
+        <!-- 3.인라인 스타일 -->
+
+        <!-- 1.외부 스타일시트(별도의 .css 문서를 작성하고 연결) -->
+        <link rel="stylesheet" href="./01_ex.css">
+
+        <!-- 같은 요소에 같은 속성을 모두 지정하면 위 3가지 방법은 -->
+        <!-- 우선순위에 따라 결정됨 -->
+
+    </head>
+
+    <body>
+        <!-- 1.타입선택자, 2.전체, 3.아이디선택자, 4.클래스선택자 -->
+        <h2 class="aa">CSS Selector Test</h2>
+        <p id="p1">Hello world</p>
+        <p class="aa">Nice to meet you</p>
+
+        <!-- 5.선택자 그룹 -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+        <a href="">NAVER</a>
+
+        <!-- 6.자식, 자손 선택자 -->
+        <div id="ss">
+            <h4>Region</h4>
+
+            <p>Hello world</p>
+            <div>
+                <p>Apple</p>
+                <p>Orange</p>
+                <p>Banana</p>
+            </div>
+        </div>
+
+        <!-- 6.1 자식/자손 복합 구조 -->
+        <div id= "kk">
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+            <ul class="gg">
+                <li>uuu</li>
+                <li>ppp</li>
+                <li>www</li>
+            </ul>
+        </div>
+
+        <!-- 8.의사선택자 -->
+        <a href="http://www.google.com" id="gg">Google</a>
+
+        <!-- 수식을 이용한 자식선택 -->
+        <table border="1">
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+        </table>
+
+        <!-- 3.인라인 스타일 적용 -->
+        <p style="color: red;">Inline style</p>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>layout2 test</title>
+
+        <style>
+            *{border: 0px dotted red;}
+            body{
+                background: rgb(255, 248, 240);
+                margin: 0px;
+                font-family: Arial, Helvetica, sans-serif;
+            
+            }
+            header{
+                background: #fae0ff;
+                margin: 0px;
+                padding: 5px;
+                text-align: center;
+            }
+
+            aside{
+                background: rgb(255, 255, 210);
+                display: table-cell;
+                padding: 15px;
+              
+            }
+
+            article{
+                display: table-cell;
+                background: rgb(225, 247, 255);
+                padding: 15px;
+            }
+
+            footer{
+                background: rgb(153, 153, 153);
+                color: white;
+                text-align: center;
+                padding: 10px;
+            }
+
+            #wrapper{
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- 시멘틱(의미를 가진) 태크 사용 -->
+        <div id="wrapper">
+
+            <header>
+                <h1>My Blog Page</h1>
+            </header>
+            <aside>
+                <h1>Links</h1>
+                <ul>
+                    <li><a href="http://www.w3c.org">W3C</a></li>
+                    <li><a href="http://www.naver.com">NAVER</a></li>
+                    <li><a href="http://www.mrhi.or.kr">MRHI</a></li>
+                </ul>
+                <figure>
+                    <img src="./pome.png" alt="pome" width="85" height="85">
+                    <figcaption>홍길동</figcaption>
+                </figure>
+            </aside>
+            <article>
+                <section>
+                    <h1> Sementic Tags</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae quisquam ea, aliquid modi voluptas ipsa expedita fugit corporis? Dignissimos itaque iure et commodi voluptatum facere assumenda illum architecto, animi aliquid?
+                    </p>
+                </section>
+                <h1> div와 span</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae quisquam ea, aliquid modi voluptas ipsa expedita fugit corporis? Dignissimos itaque iure et commodi voluptatum facere assumenda illum architecto, animi aliquid?
+                </p>
+                <section></section>
+            </article>
+            <footer>
+                Copyright &copy; 2021 mrhi
+            </footer>
+
+        </div>
+
+    </body>
+</html>

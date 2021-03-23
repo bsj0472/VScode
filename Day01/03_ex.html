@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ex3</title>
+    </head>
+    <body>
+        
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+          
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+      
+        <dl>
+            <dt>aaa</dt>
+            <dd>이것은 Definition Data입니다.</dd>
+
+            <dt>bbb</dt>
+            <dd>이것은 Definition Data입니다.</dd>
+
+            <dt>ccc</dt>
+            <dd>이것은 Definition Data입니다.</dd>
+        </dl>
+
+        <hr>
+        <!-- anchor 요소 <a) -->
+
+        <!-- 절대주소 지정 : 웹문서가 있는 서버 url까지 모두 기입하는 방식 -->
+      <a href="http://naver.com">NAVER</a>
+      <br>
+
+       <!-- 상대주소 지정 : 이 html 문서가 있는 폴더를 기준으로 해당 문서의 경로 기입하는 방식 -->
+       <a href="./02_text.html" target="_blank">상대주소  : 같은 폴더의 다른 문서 열기</a>
+       <br>
+
+       <!-- 같은 html문서 안에서 특정 id를 가진 요소위치로 스크롤 변경 -->
+       <a href="#help">도움말 위치로 이동</a>
+       <br>
+       <br>
+       <p id="help">도움말</p>
+
+       <!-- a요소가 인라인요소여서 줄바꿈을 위해 <br>요소를 넣었는데 이방법말고 -->
+       <p><a href="">aaa</a></p>
+       <p><a href="">bbb</a></p>
+
+       <!-- 리스트의 항목에 링크달기 -->
+       <ul>
+           <li><a href="">111</a></li>
+           <li><a href="">222</a></li>
+           <li><a href="">333</a></li>
+       </ul>
+
+       <!-- href의 값이 반드시 웹문서(html)가 아니여도 됨 -->
+       <p><a href="mailto:96kite@hanmail.net">96kite@hanmail.net</a></p>
+
+       <!-- 이미지 보기 -->
+       <p><a href="http://mrhi2020.dothome.co.kr/paris.jpg">이미지 링크</a></p>
+       <p><a href="./seolak.jpg">이미지 링크</a></p>
+
+       <!-- 웹브라우저에서 보여줄 수 없는 문서의 형식 (.hwp, .zip, .xls) 링크하면 다운로드-->
+       <p><a href="http://mrhi2020.dothome.co.kr/aaa.zip">압출파일 다운로드</a></p>
+       <hr>
+
+       <!-- 이미지 요소  : inline 요소 -->
+       <img src="./seolak.jpg" >
+       <img src="./seolak.jpg" width="200">
+       <img src="http://mrhi2020.dothome.co.kr/paris.jpg" width="50%">
+       <img src="./01_ex.html" alt="이미지없음">
+       <img src="./images/coffee1.gif" alt="coffee" width="200">
+
+       <hr>
+       <!-- 이미지 + anchor -->
+       <a href="./images/americano.jpg" target="_blank"><img src="./images/americano.jpg" alt=""width="100"></a>
+
+
+
+
+    </body>
+</html>

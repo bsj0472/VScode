@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>parse XML</title>
+
+        <!-- JQuery library 적용 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+
+            //xml 데이터
+            var xml= "<movie><title>Avatar</title><genre>SF, advanture</genre></movie>";
+
+            var xmlDOM= $.parseXML(xml);
+
+            var title= $(xmlDOM).find('title').text();
+            var genre= $(xmlDOM).find('genre').text();
+
+            document.write(title+"<br>"+genre);
+
+        </script>
+
+    </head>
+    <body>
+        
+
+    </body>
+</html>

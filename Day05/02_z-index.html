@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>z-index test</title>
+
+        <style>
+            #b1{
+                position: absolute;
+                top: 0px; left: 0px;
+                width: 100px; height: 100px;
+                background: blue;
+                z-index: 2;
+            }
+            #b2{
+                position: absolute;
+                top: 30px; left: 30px;
+                width: 100px; height: 100px;
+                background: yellow;
+                z-index: 1;
+            }
+            #b3{
+                position: absolute;
+                top: 60px; left: 60px;
+                width: 100px; height: 100px;
+                background: green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="b1">box #1</div>
+        <div id="b2">box #2</div>
+        <div id="b3">box #3</div>
+    </body>
+</html>

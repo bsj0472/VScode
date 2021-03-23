@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTTP Request test</title>
+    </head>
+
+    <body>
+        
+        <!-- <form> 요소 : anchor처럼 다른 문서를 실행하지만 데이터를 전달할 수 있고 이동을 위한 별도의 input요소가 필요함 -->
+        
+        <!-- GET Method form 연습 -->
+        <form action="./getTest.php" method="GET">
+            <input type="text" name="title">
+            <input type="text" name="msg">
+
+            <!-- 서버에 데이터를 보내는 버튼 -->
+            <input type="submit" value="submit">
+        </form>
+
+        <hr>
+
+        <!-- POST Method 연습 -->
+
+        <form action="./postTest.php" method="POST">
+            <fieldset>
+                <legend>input &amp; post test</legend>
+
+                <label for="in">name : </label>
+                <input type="text" id="in" name="name">
+                <br>
+                
+                <label>password : <input type="password" name="pw"></label> <br>
+
+                <p>
+                    gender:
+                    <label><input type="radio" name="gender" value="male" checked>남성</label>
+                    <label><input type="radio" name="gender" value="female" >여성</label>
+                </p>
+
+                <p>
+                    fruits:
+                    <label><input type="checkbox" name="fruits[]" value="apple">사과</label>
+                    <label><input type="checkbox" name="fruits[]" value="banana">바나나</label>
+                    <label><input type="checkbox" name="fruits[]" value="orange">오렌지</label>
+                </p>
+
+                <p>
+                    message : <br>
+                    <textarea name="msg" cols="40" rows="5"></textarea>
+                </p>
+
+                <div>
+                    <select name="car">
+                        <optgroup label="자동차브랜드">
+                            <option value="현대">현대</option>
+                            <option value="기아">기아</option>
+                            <option value="쉐보레">쉐보레</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <br>
+
+                <div>
+                    <input type="submit" value="전송">
+                    <input type="reset" value="초기화">
+                </div>
+
+            </fieldset>
+        
+        </form>
+            
+
+    </body>
+</html>

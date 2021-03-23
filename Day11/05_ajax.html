@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AJAX test</title>
+
+        <!-- Jquery 라이브러리 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+            function getTest(){
+                var name= document.getElementById('in1').value;
+                var msg= document.getElementById('in2').value;
+
+                //서버와 HTTP통신을 수행하는 객체 생성[android java의 HttpUrlConnection와 같은 역할]                
+                var req= new XMLHttpRequest();
+
+                //서버로부터의 응답결과를 받았을 때 발동하는 콜백메소드
+                req.onreadystatechange= function(){
+                    if(req.readyState==4 && req.status==200){
+                        document.getElementById('aa').innerHTML= req.responseText;
+                    }
+                }
+
+                //세번째 파라미터 : Asynchronous 여부
+                // req.open('GET', './aaa.php?name='+name+"&msg="+msg, true);
+                // req.send();
+                
+                // req.open('GET','./sss.txt', true);
+                // req.send();
+
+                req.open('GET','./sss.html', true);
+                req.send();
+            }
+
+            function postTest(){
+                var name= document.getElementById('in1').value;
+                var msg= document.getElementById('in2').value;
+
+                var req= new XMLHttpRequest();
+                req.onreadystatechange= function(){
+                    if(req.readyState==4 && req.status==200){
+                        aa.innerHTML= req.responseText;
+                    }
+                }
+
+                req.open('POST', './bbb.php', true);
+
+                //POST방식으로 보낼때는 반드시 헤더 작업 필요
+                req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+                req.send("name="+name+"&msg="+msg);
+            }
+        </script>
+
+    </head>
+    <body>
+        <div>
+            <input type="text" id="in1">
+            <input type="text" id="in2">
+        </div>
+        <p>
+            <button onclick="getTest()">GET</button>
+            <button onclick="postTest()">POST</button>
+        </p>
+
+        <p>
+            <button onclick="sss()">JQuery GET</button>
+            <button onclick="ggg()">JQuery POST</button>
+        </p>
+
+        <hr>
+        <h3>서버 Http통신 결과</h3>
+        <div id="aa"></div>
+
+
+        <script>
+            function sss(){
+                $.ajax({
+                    type:"GET",
+                    url:"./aaa.php?name=sam&msg=Hello",
+                    success: function(data){
+                        $('#aa').html(data);
+                    },
+                    error:function(e){
+                        $('#aa').html(e.responseText);
+                    }
+                });
+
+            }
+            function ggg(){
+                $.ajax({
+                    type:"POST",
+                    url:"./bbb.php",
+                    data: "name=robin&msg=Nice",
+                    success: function(data){
+                        $('#aa').html(data);
+                    },
+                    error:function(e){
+                        $('#aa').html(e.responseText);
+                    }
+                });
+
+            }
+        </script>
+    </body>
+</html>

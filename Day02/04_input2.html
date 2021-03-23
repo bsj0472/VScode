@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charseet="utf-8">
+        <title>input2 test</title>
+    </head>
+
+    <body>
+        
+        <!-- 파일전송하기 -->
+        <!-- form 을 이용한 file 전송시에는 enctype="multipart/form-data" 가 반드시 필요함  -->
+        <form action="./file.php" method="POST" enctype="multipart/form-data">
+            <input type="file" accept="image/png,image/jpeg" name="aaa">
+            <input type="submit">
+
+        </form>
+
+        <!-- 파일 멀티초이스 -->
+        <form action="./file2.php" method="POST" enctype="multipart/form-data">
+            <input type="file" multiple name="bbb[]">
+            <input type="submit">
+        </form>
+
+        <!-- 새로 추가된 input 요소의 type들 -->
+        <form action="">
+
+            <!-- 날짜 입력기 -->
+            <input type="date"> <br>
+            <input type="datetime-local"> <br>
+
+            <!-- 색상 -->
+            <input type="color"> <br>
+
+            <!-- 이메일 - 데스크탑에서는 text와 같고 모바일에서 키패드가 달라짐 -->
+            <!-- 약간의 유효성검사를 해줌 (@문자 포함여부 검사해줌 - submit할때) -->
+            <input type="email"> <br>
+
+            <!-- tel : 전화키패드 -->
+            <input type="tel"><br>
+
+            <!-- 텍스트입력시 x버튼이 오른쪽 끝에 생겨서 쉽게 reset가능 -->
+            <input type="search"> <br>
+
+            <!-- 슬라이드 게이지바 -->
+            <input type="range" min="1" max="10" step="2" value="8"> <br>
+
+            <!-- 숫자 선택기 -->
+            <input type="number" min="-2" max="10" step="3" value="-2"> <br>
+
+            <!-- 인터넷주소 required속성으로 약간의 검증(http: 작성여부 검사)-->
+            <input type="url" required><br>
+            <input type="submit">
+
+        </form>
+
+        <hr>
+
+        <!-- 새로 추가된 속성들 -->
+        <form action="">
+            <!-- 힌드 : placeholder -->
+            <input type="text" placeholder="enter name"> <br>
+
+            <!-- 반드시 입력해야 하는 필수 항목 : required -->
+            <input type="text" required>
+
+            <!-- 수정불가한 입력요소 -->
+            <input type="text" value="홍길동" readonly>
+
+            <!-- 최대글자 수 제한 -->
+            <input type="text" maxlength="5">
+
+            <!-- 페이지 로딩이 완료되면 자동으로 포커스 가져오기 -->
+            <input type="text" autofocus>
+
+            <!-- 자동완성기능 -->
+            <input type="text" autocomplete list="kkkk">
+
+            <datalist id="kkkk">
+                <option value="canada" label="캐나다"></option>
+                <option value="china" label="중국"></option>
+                <option value="korea" label="한국"></option>
+
+
+            </datalist>
+
+            <hr>
+            <input type="submit">
+
+        </form>
+
+        <hr>
+        <!-- hidden 속성 : 화면에는 보이지 않지만 서버에 데이터를 보내고 싶을 때 사용 -->
+        <form action="./aaa.php" method="GET">
+            <input type="hidden" name="id" value="1234">
+            <input type="text" name="title">
+            <input type="submit">
+        </form>
+
+
+    </body>
+</html>

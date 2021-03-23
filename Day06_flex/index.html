@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="utf-8">
+        <title>Web site templete</title>
+
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+            }
+
+            header{
+                /* text-align: center; */
+                background-color: #43c0a7;
+                /* padding: 60px; */
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 240px;
+            }
+            nav{
+                display: flex;
+                background-color: #333333;
+
+            }
+            nav a{
+                color: white;
+                padding: 14px 20px;
+                text-decoration: none;
+            }
+            nav a:hover{
+                background-color: white;
+                color: black;
+            }
+
+            /* 왼쪽사이드와 본문영역을 가진 부모요소 */
+            .container{
+                display: flex;
+                /* 브라우저가 작아지면 양옆으로 놓을 공간이 없을때 */
+                /* 자동으로 다음줄로 내려가도록 */
+                flex-wrap: wrap;
+            }
+
+            aside.side{
+                flex: 3; /*너비3할*/
+                background-color: #f1f1f1;
+                padding: 20px;
+            }   
+            aside.main{
+                flex: 7; /*너비 7할*/
+                padding: 20px;
+                background-color: white;
+            }
+
+            /* fake image영역 */
+            /* 실제로는 이 영역안에 이미지 요소를 배치 */
+            .fakeimg{
+                background-color: #aaaaaa;
+                width: 100%;
+                padding: 20px;
+            }
+
+            footer{
+                padding: 20px;
+                text-align: center;
+                background-color: #aaaaaa;
+            }
+
+            /* 반응형 웹= 미디어 쿼리 문법 */
+            @media screen and(max-width:700px){
+                .container, nav{
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Notice 영역 -->
+        <div style="background-color: yellow; padding: 5px;">
+            <h4 style="text-align: center;">Resize the browser window</h4>
+        </div>
+        <!-- header 영역 -->
+        <header>
+            <h1>My Web Page</h1>
+            <p>With a <strong>flexible </strong>layout</p>
+        </header>
+
+        <!-- navigation menu -->
+        <nav>
+            <a href="">Link</a>
+            <a href="">Link</a>
+            <a href="">Link</a>
+            <a href="">Link</a>
+        </nav>
+
+        <!-- 왼쪽 사이드 영역과 본문영역을 flexible 하게 배치하는 부모요소 -->
+        <div class="container">
+            <!-- 왼쪽 사이드 -->
+            <aside class="side">
+                <h2>About Me</h2>
+                <h5>Photo of me:</h5>
+                <div class="fakeimg" style="height: 200px;">Image</div>
+                <p>Some text about me</p>
+
+                <h3>More side menu</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="fakeimg" style="height: 60px;" >Image</div>
+                <div class="fakeimg" style="height: 60px;" >Image</div>
+                <div class="fakeimg" style="height: 60px;" >Image</div>
+
+            </aside>
+
+            <!-- 본문 영역 -->
+            <article class="main">
+                <h2>TITLE HEADING</h2>
+                <h2>Title description, 2021-03-11</h2>
+                <div class="fakeimg" style="height: 200px;">Image</div>
+                <p>Some text....</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nihil earum obcaecati veritatis voluptatum sed</p>
+
+                <br>
+                <h2>TITLE HEADING 2</h2>
+                <h2>Title description, 2021-03-12</h2>
+                <div class="fakeimg" style="height: 200px;">Image</div>
+                <p>Some text....</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nihil earum obcaecati veritatis voluptatum sed</p>
+
+
+            </article>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <h2>Footer</h2>
+        </footer>
+    </body>
+   
+
+</html>

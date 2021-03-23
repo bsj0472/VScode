@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        //3. 화살표 함수(Arrow Function) - JAVA언의 람다식표기법
+
+        //1) 선언적 함수
+        function show(){
+            document.write("show <br>");
+        }
+        show();
+
+        //2) 익명함수
+        let output= function(){
+            document.write("output <br>");
+        }
+        output();
+
+        //3) 화살표함수 - 익명함수의 표기법을 간소화한 문법
+        let display= ()=>{
+            document.write("display<br>");
+        }
+        display();
+
+        //당연하게 화살표함수도 파라미터 받을 수 있음
+        let display2= (name)=>{
+            document.write("display2 : " + name+"<br>");
+        }
+        display2("sam");
+
+        //4) 화살표함수의 간단 표기법!!
+        //파라미터가 1개일때는 ()표시를 생략가능
+        let display3= name=>{
+            document.write("display3 : " + name+"<br>");
+        }
+        display3("robin");
+
+        //실행문이 1줄이면 {}도 생략 가능함
+        let display4= name=> document.write("display4 : " + name+"<br>");
+        display4("hong");
+
+        //파라미터가 0개 이거나 2개이상이면 ()는 생략할 수 없음
+        let display5= ()=> document.write("display5!<br>");
+        display5();
+
+        let display6= (name, age)=> document.write(name+", "+age+"<br>");
+        display6();  
+
+    </script>
+
+    <hr>
+
+    <!-- 화살표함수는 보통 이벤트 처리 목적으로 많이 사용됨 -->
+    <button id="btn1">button</button>
+    <p id="p1"></p>
+
+    <script>
+
+        //버튼 클릭이벤트 처리
+        //1)예전방식
+        let btn= document.getElementById('btn1');
+        btn1.onclick= function(){
+            document.getElementById('p1').innerHTML="click button!";
+        }
+
+        //2)화살표함수
+        btn1.onclick= ()=>document.getElementById('p1').innerHTML="clicked!!";
+
+        //2. 반복문 처리에도 많이 사용함
+        let arr= new Array(10,20,30);
+
+        //배열요소값 출력
+        for(let i=0; i<arr.length; i++){
+            document.getElementById('p1').innerHTML += arr[i]+"<br>";
+        }
+
+        //in키워드를 이용한 요소값 출력
+        for( i in arr){ //인덱스 번호 자동 증가
+            document.getElementById('p1').innerHTML += arr[i]+"<br>";
+        }
+
+        // 배열객체의 메소드 중에서 forEach()메소드 이용[ES6버전에서 추가]
+        arr.forEach( function(value, index, array){
+            document.getElementById('p1').innerHTML += value +"<br>";
+        }); //파라미터의 함수가 배열요소개수만큼 호출됨
+
+        //필요한 파라미터만 사용해도 됨
+        arr.forEach( function(value){
+            document.getElementById('p1').innerHTML += value +"<br>";
+        }); //파라미터의 함수가 배열요소개수만큼 호출됨
+
+        //위 콜백 익명함수를 화살표 함수로 
+        arr.forEach( value=> document.getElementById('p1').innerHTML += value +"<br>"  );
+
+        //forEach()와 동작이 비슷한 map()메소드
+        //차이점 : forEach()는 리턴인 없고 map()을 리턴이 있음
+        //예) 배열의 각 요소에 1을 더하여 리턴
+        let resultArr= arr.map( function(value){
+            return value+1;
+        });
+        //JS는 배열객체를 출력하면 자동으로 배열요소값, 로 출력해줌
+        document.write("결과 : " + resultArr +"<br>");
+        document.write("원본 : " + arr +"<br>");
+
+        //콜백익명함수를 화살표함수로 변경
+        resultArr= arr.map( (value)=>{return value+1;}  );
+        //줄여쓰기
+        resultArr= arr.map( value=>{return value+1;}  );
+        //실행문의 {}도 생략
+        //return이 있다면 {}를 그냥 생략은 안됨
+        //만약 {}를 생략하고 싶다면 return키워드도 생략해야만 함
+        //그리고 ; 도 생략해야만 함.
+        resultArr= arr.map( value=> value+1 );
+        document.write("결과 : " + resultArr +"<br>");
+        document.write("원본 : " + arr +"<br>");
+
+        arr.forEach( value=> value+5 );
+        arr.forEach( function(value){
+            value+5;
+        });
+
+    </script>
+
+    <hr>
+
+    <script>
+
+        //화살표 함수와 익명함수의 가장 큰 차이점
+        //이 차이점 때문에 ReactNative에서는 화살표 함수를 선호함
+
+        class AAA{
+            name="sam";
+            age=20;
+
+            show(){
+                document.write(this.name+", "+this.age);
+                this.out();
+            }
+
+            out(){
+            }
+
+            //이벤트 처리용 메소드라면..
+            onclick= function(){
+                this.name= "robin"; //class 멤버변수 name이 아님
+            }
+
+            //이벤트 처리를 화살표함수로 하면
+            onclick= ()=>{
+                this.name="hong"; //이 클래스의 멤버변수 name을 의미함
+            }
+        }
+
+        //이벤트를 처리하는 콜백함수를 익명함수로 만들면
+        //그 함수안에서 this키워드를 사용하면 이 이벤트를 발동한
+        //btn1 요소가 됨
+        document.getElementById('btn1').onclick= function(){
+            this.name ; //버튼의 멤버변수를 의미하게됨..1
+        }
+
+    </script>
+    
+</body>
+</html>

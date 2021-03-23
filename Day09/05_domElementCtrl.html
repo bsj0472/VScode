@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM control</title>
+    </head>
+    <body>
+        
+        <!-- 요소 속성 변경 -->
+        <!-- img의 src속성 변경 -->
+        <img src="./pome.png" alt="" width="120" height="100" id="aa">
+        <button onclick="change()">button</button>
+        <script>
+            function change(){               
+                document.getElementById('aa').src= "./poodle.png";
+            }
+        </script>
+
+        <hr>
+
+        <!-- 요소의 스타일속성(인라인스타일) 변경 -->
+        <p id="p1">this is paragraph</p>
+        <input type="button" value="스타일변경" onclick="aaa(this)">
+        <script>
+            function aaa(e){
+                //클릭된 버튼의 앞 형제요소
+                var p= e.previousElementSibling;
+                p.style.color="red";
+                p.style.fontWeight="bold";
+                p.style.fontFamily="cursive";
+            }
+        </script>
+
+        <style>
+            .kk{
+                color: blue;
+                font-weight: bold;
+                font-family: monospace;
+            }
+        </style>
+
+        <input type="button" value="클래스속성 변경으로 스타일 변경" onclick="bbb()">
+        <script>
+            function bbb(){
+                var p= document.getElementById('p1');
+                p.className="kk";
+            }
+        </script>
+
+        <!-- DOM노드의 삭제와 동적생성 및 추가 -->
+        <hr>
+        <button onclick="addText()">add Text Node</button>
+        <button onclick="addElement()">add element Node</button>
+        <button onclick="removeNode()">remove Node</button>
+        <p class="pp"></p>
+
+        <script>
+            function addText(){
+                var node= document.createTextNode("This is text");
+                var node= document.createTextNode("<a href=''>This is text</a>");
+
+                var target= document.getElementsByClassName('pp')[0];
+                target.appendChild(node);
+
+                //위 동작을 짧게 줄여쓰기..
+                //target.textContent="<a href=''>This is text</a>";
+            }
+
+            function addElement(){
+
+                //요소노드 만들기
+                var node= document.createElement('a');
+
+                //요소노드에 속성노드 붙이기
+                var attr= document.createAttribute('href');
+                attr.value="http://www.google.com";
+                node.setAttributeNode(attr);
+
+                //텍스트노드 추가
+                var text= document.createTextNode("Google");
+                node.appendChild(text);
+
+                var target= document.getElementsByClassName('pp')[0];
+                target.appendChild(node);
+
+                //위 동작을 간단히 작성하고 싶다면
+                //target.innerHTML="<a href='http://www.google.com'>google</a>"
+
+            }
+
+            function removeNode(){
+                var target= document.getElementsByClassName('pp')[0];
+                var node= target.firstChild;
+
+                target.removeChild(node);
+            }
+        </script>
+
+        <!-- HTML5에서 새로 생긴 dom요소 제어메소드 : CSS의 선택자표기법을 이용하여 요소 찾아오기 -->
+        <hr>
+
+        <h3 id="ee">aaa</h3>
+        <button onclick="hhh()">button</button>
+        <script>
+            function hhh(){
+                var e= document.querySelector('#ee');
+                e.innerHTML="Hello world";
+            }
+        </script>
+
+        <hr>
+        <h4>aaa</h4>
+        <h4>bbb</h4>
+        <h4>ccc</h4>
+        <script>
+            var es= document.querySelectorAll('h4');
+            es[0].onclick= function(){
+                alert('aa');
+            }
+
+            es[1].onclick= function(){
+                alert(this);
+            }
+
+            es[2].onclick= function(e){
+                alert(e); //Mouse Event관리 객체
+            }
+        </script>
+
+
+
+    </body>
+</html>

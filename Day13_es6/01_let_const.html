@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>let,const</title>
+        
+    </head>
+    <body>
+        <script>
+
+            //ECMAscript6(2015년 발표 : ES6 or ES2015)의 새로운 문법들[참고. ECMA 2016 (ES7): 제곱 연사자 includes() 추가, ECMA 2017(ES8) : async-await 도입]
+
+            //1.변수 선언 키워드 추가 : let , const
+
+            //기존의 var 변수 
+            var a =10;
+            document.write(a+"<br>");
+
+            //같은 이름의 변수를 또 선언하면?
+            var a=20;
+            document.write(a+"<br>");
+            //상관없음... 그냥'a' 변수의 값을 20으로 변경됨
+
+            //새로운  let 키워드로 변수 선언
+            let b=100;
+            document.write(b+"<br>");
+
+            //같은 이름의 변수를 선언하면 error -이 script전체가 실행되지 않음
+            //let b=200;
+            //document.write(b+"<br>");
+
+            //변수값 변경은 그냥 일반 native언어처럼...
+            b=200;
+            document.write(b+"<br>");
+
+            //const는 상수화된 변수... c언어 const, java의 final과 같음
+            const c=  1000;
+            document.write(c+"<br>");
+
+            //const 는 상수이므로 값의 변경불가 - 이 명령줄 다음부터 동작하지 않는 ERROR
+            //c=2000;
+            //document.write(c+"<br>");
+
+            //당연하게 같은 이름의 const상수는 생성 불가 -치명적 에러
+            //const c= 2000;
+
+            //let, const를 사용해도 역시 자료형은 자유롭게 저장 가능함
+            let d="aaa";
+            document.write(d+"<br>");
+            d=30;
+            document.write(d+"<br>");
+
+            d=true;
+            document.write(d+"<br>");
+
+            d=new Date()
+            document.write(d+"<br>");
+
+            const e= "sam";
+            document.write(e+"<br>");
+
+            const f=new Date();
+            document.write(f+"<br>");
+
+            document.write("<hr>");
+
+            //var과 let, const의 2번째 차이점
+            //인식범위(scope)의 차이가 거 의미 있음
+            //var 키워드는 함수단위 지역변수이고
+            //const,let은 {}블럭단위 지역변수임
+
+            //연습1.
+            var g=10;
+            if(true){
+                var g=20; //var은 {}을 지역으로 보지 않기에 이 변수는 지역변수가 아님!!
+                document.write(20+"<br>"); //20
+
+            }
+            document.write(g+"<br>");//20
+
+            //let으로 변수 선언시
+            let h=10;
+            if(true){
+                let h=20; // let변수는 {}단위 지역이므로 이 변수는 지역 변수임
+                document.write(h+"<br>"); //20
+                
+            }
+            document.write(h+"<br>"); //10
+
+            //{}지역 안에만 선언된 변수
+            if(true){
+                var n = 30;
+            }
+            document.write(n+"<br>"); //30
+
+            if(true){
+                let m=50;
+            }
+           // document.write(m+"<br>"); // m변수를 인식하지 못함. ERROR
+
+            //반복문 사용할때
+            for(var i=0; i<3; i++){
+                document.write("aaa<br>");
+            }
+            document.write(i+"<br>");
+            
+            for(let j=0; j<3; j++){
+                document.write("bbb<br>");
+            }
+            //document.write(j+"<br>"); //j는 반복문의 지역변수여서 밖에서는 인식 불가 에러
+
+            //참고.호이스팅 기능
+            document.write(x+"<br>"); //변수선언 x가 뒤에 있지만 변수명은 인식되기 때문에 에러가 아님. 다만 순서상 값을 나중에 넣었기에 현재 상태값은 undefined임
+            var x=10;
+
+
+            
+
+
+
+            
+
+
+
+        </script>
+        
+    </body>
+</html>

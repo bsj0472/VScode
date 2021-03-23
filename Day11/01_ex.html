@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jquery Library test</title>
+       
+        <!-- JQuery Library 추가 : www.jquery.com-->
+        <!-- 1. 파일 다운로드 방식 -->
+        <!-- <script src="./jquery-3.6.0.min.js"></script> -->
+
+        <!-- 2. CDN( Contents Delivery Network ) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+
+            //문서의 로딩이 완료되는 것에 반응하는 이벤트처리
+            //Jquery를 이용 [ onload 이벤트 ]
+            jQuery(document).ready( function(){
+                //alert('ready');
+
+                jQuery('#btn').click(function(){
+                    //alert('clicked');
+                    $(this).hide();
+                });
+
+            } );
+
+        </script>
+        
+    </head>
+    <body>
+
+        <button id="btn">button</button>
+
+        <hr>
+
+        <h3>클릭이벤트 처리 3가지 방법</h3>
+        <button id="b1">hide</button>
+        <button id="b2">show</button>
+        <button id="b3">toggle</button>
+        <p id="p1">이 요소를 제어합니다.</p>
+
+        <script>
+            //1. 이벤트명() 
+            $('#b1').click(function(){
+                $('#p1').hide();
+            });
+
+            //2. bind()
+            $('#b2').bind('click', function(){
+                $('#p1').show();
+            });
+
+            //3. on() - bind()의 개량형, 멀티 이벤트 처리기능 향상 [많이 선호됨]
+            $('#b3').on('click', function(){
+                $('#p1').toggle();
+            });
+        </script>
+
+        <hr>
+
+        <h3>포커스 이벤트</h3>
+        <label>name : <input type="text"></label>
+        <script>
+            //input요소의 포커스 이벤트 처리
+            $('input').on('focus', function(){
+                $(this).css('background-color','yellow');
+            });
+
+            $('input').blur(function(){
+                $(this).css('background-color','');
+            });
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>animation test</title>
+        <style>
+            div#aa{
+                /* 원모양 만들기 */
+                width: 50px;
+                height: 50px;
+                background: green;
+                border-radius: 25px;
+
+                /* 원하는 좌표로 움직이려면 절대위치 지정필요 */
+                position: absolute;
+                
+                /* 아래에서 설계한 애니메이션을 적용 */
+                animation-name: myanim;
+                animation-name: bounce;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-out;
+                
+            }
+
+            /* 애니메이션 동작을 설계 */
+            @keyframes myanim{
+                0% {left:0px; top:0px}
+                25%{left: 100px; top: 50px;}
+                50%{left: 200px; top: 0px;}
+                75%{left: 100px; top:50px;}
+                100%{left: 0px; top: 0px;}
+            }
+
+            /* 다른 동작의 애니메이션 설계 : 공 바운스 모양 */
+            @keyframes bounce
+            {
+                from, to{bottom: 0px; animation-timing-function: ease-out;}
+                50%{bottom: 200px; animation-timing-function: ease-in;}
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="aa"></div>
+    </body>
+</html>

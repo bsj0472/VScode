@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dialog teset</title>
+        <script>
+            // 이 영역안에서는 JS문법체계를 따름
+
+            // 일반적인 알림 경고창.
+            alert();
+            alert('알림');
+
+            // 사용자에게 확인/취ㅐ소를 선택하게 하는 다이얼로그
+            //사용자가 선택을 하면 이 함수의 리턴값으로 결과를 줌
+            //리턴값 : true,false
+            var answer=confirm("종료하시겠습니까?");
+            document.write(answer + "<br>");
+
+            //사용자 입력 다이얼로그
+            //리턴값: 값입력확인=string,값을 입력하지 않고 확인을 누르면 기본값 리턴,취소를 누르면 null값 리턴
+            var age=prompt("당신의 나이를 입력하세요","0");//두번째 파라미터 : 기본값
+            document.write(age+"<br>");
+            document.write(typeof(age));
+
+            function aaa(){
+                document.write("화면 전체 다시 작성!!");
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <h2>body heading</h2>
+        <button onclick="aaa()">click</button>
+        
+    </body>
+</html>

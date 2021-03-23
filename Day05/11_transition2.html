@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>전환 효과2</title>
+        <style>
+            div.aa img{
+                background: red;
+                width: 200px;
+                height: 100px;
+                transition: width 1s, height 1s, transform 1s, background-color 3s;
+            }
+            div.aa img:hover{
+                width: 300px;
+                height: 150px;
+                transform: rotate(30deg);
+                transform: rotate(1.5rad); /*radian 각도단위*/
+                /* 다중변환 */
+                transform: rotate(30deg) scale(1.2, 1.2) translate(80px, 0px); 
+                background-color: blue;
+            
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="aa">
+            <img src="./lion.png" alt="lion">
+            <img src="./pome.png" alt="lion">
+
+        </div>
+    </body>
+</html>

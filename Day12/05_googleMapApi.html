@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google Map API</title>
+
+        <style>
+            #map{
+                width: 100%;
+                height: 400px;
+            }
+        </style>
+
+        <!-- Google Map API를 사용하는 script 추가 및 키발급 -->
+        <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TOEIFXpPnMo_pgDU_1nhsvcSoBOWO38&callback=initMap">
+        </script>
+
+        <script>
+            function showMap(){
+
+                //지도가 보여질 요소 찾아오기
+                var e= document.getElementById('map');
+
+                //구글 지도 생성 및 e요소에 붙여서 보이기
+                new google.maps.Map( e, {center:{lat:37.562161, lng:127.035199},zoom:14} );
+                
+            }
+        </script>
+
+
+    </head>
+    <body>
+        
+        <button onclick="showMap()">show map</button>
+
+        <!-- 지도를 보여주는 요소는 반드시 사이즈가 지정되어야 함 -->
+        <div id="map"></div>
+
+    
+
+
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>02 ex</title>
+
+        <style>
+            #anchor:link{color: blue;}
+            #anchor:visited{color:brown ;}
+            #anchor:hover{color: red; font-size: 2em;}
+            #anchor:active{color: yellow;}
+
+            p:hover{background-color: teal;}
+
+            img{background-color: yellow; border: 2px solid red;}
+            img:hover{background-color: gray; width: 100%;}
+
+            /* 리스트 스타일 변경 */
+            ul.a{list-style-type: circle;}
+            ul.b{list-style-type: disc;}
+            ul.c{list-style-type: square; list-style-position: inside;}
+
+            /* 블릿기호를 이미지로- 거의 안씀(사이즈 조절이 안되서) */
+            ul.d{list-style-image: url(./border.png); list-style-position: inside;}
+
+            /* 순서가 있는 리스트 ol */
+            .e{list-style-type: lower-alpha;}
+            .f{list-style-type: lower-roman;}
+            .g{list-style-type: lower-greek;}
+            .e{list-style-type: upper-roman;}
+            .f{list-style-type: decimal-leading-zero;} /*01, 02, 03*/
+
+            /* 실제 리스트는 메뉴를 만들때 많이 사용됨 */
+
+        </style>
+    </head>
+
+    <body>
+        
+        <a href="http://www.naver.com" id="anchor">aaaaaaaaaaa</a>
+        <!-- anchor 요소가 아니어도 : 의사 선택자 가능함 -->
+        <p>Hello world</p>
+        <img src="./image.png" alt="image">
+
+        <hr>
+
+        <!-- 리스트스타일 -->
+        <ul class="a">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JAVASCRIPT</li>
+        </ul>
+        <ul class="b">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JAVASCRIPT</li>
+        </ul>
+        <ul class="c">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JAVASCRIPT</li>
+        </ul>
+        <ul class="d">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JAVASCRIPT</li>
+        </ul>
+
+        <ol class="e">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JAVASCRIPT</li>
+        </ol>
+        <ol class="f">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JAVASCRIPT</li>
+        </ol>
+        <ol class="g">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JAVASCRIPT</li>
+        </ol>
+
+
+    </body>
+</html>

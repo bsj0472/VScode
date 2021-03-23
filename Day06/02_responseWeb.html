@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>반응형 웹</title>
+
+        <style>
+
+            *{padding: 0; margin: 0;}
+
+            #wrap{
+                width: 90%;
+                border: 4px solid black;
+                margin: 0 auto;
+            }
+
+            #wrap div{
+                width: 100%;
+                height: 100px; 
+                display: inline-block;
+                /* inline-block특성은 기본적으로 좌우여백을 가짐(4~6px) */
+                margin-right: -6px;
+            }
+
+            #wrap div:first-child{ background-color: aqua;}
+            #wrap div:nth-child(2){ background-color: lightgreen;}
+            #wrap div:nth-child(3){ background-color: orange;}
+            #wrap div:nth-child(4){ background-color: indigo;}
+            #wrap div:last-child{ background-color: yellow;}
+
+            /* 반응형 웹을 위한 미디어쿼리 적용 */
+            /*320px이상 : smart phone- potrait 모드*/
+            @media all and (min-width:320px){
+                #wrap div{width: 100%;}
+            }
+
+            /* 600px이상 : smart phone-landscape  or  tablet */
+            @media all and (min-width: 600px){
+                #wrap div{width: 50%;}
+                #wrap div:last-child{width: 100%;}
+            }
+
+            /* 800px이상 : desktop monitor */
+            @media all and (min-width: 800px){
+                #wrap div{width: 20%;}
+                #wrap div:last-child{width: 20%;}
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div>aa</div>
+            <div>bb</div>
+            <div>cc</div>
+            <div>dd</div>
+            <div>ee</div>
+        </div>
+    </body>
+</html>

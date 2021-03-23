@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            navigation menu test
+        </title>
+
+        <style>
+
+            ul{
+                list-style: none;
+                border-top: 1px solid red;
+                border-bottom: 1px solid red;
+                text-align: center;
+                padding: 10px 0;
+
+            }
+            /* 블럭요소인 li를 옆으로 배치하기 위해 inline으로특성 변경 */
+            ul li{
+                display: inline;
+                padding: 0px 10px;
+                text-transform: uppercase;
+                letter-spacing: 10px;
+                
+            }
+
+            ul li a{text-decoration: none; color: black; }
+            ul li a:hover{text-decoration: underline;}
+
+            #header{
+                background-color: #CCCCCC;
+                text-align: center;
+                padding: 3em 0em;
+                background-image: url("./moana03.jpg");
+                background-size:cover;
+
+                height: 400px;
+                color: cornflowerblue;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <!-- 헤더영역 -->
+        <div id="header">
+            <h1>HOME PAGE</h1>
+            <p>This is my Homepage</p>
+        </div>
+        +
+        <!-- 네비메뉴 -->
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+
+        </ul>
+
+    </body>
+</html>

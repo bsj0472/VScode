@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS에서의 객체</title>
+
+        <script>
+
+            // 자바에서 객체의 2가지 종류
+            //1. 내장 객체 : document, window, navigation... etc.. Date(), String(), Number(), Array() ...
+            //2. 사용자정의 객체
+
+            // 객체를 생성 2가지 방법 ( ECMA5이상 버전부터 class키워드 생김 : 즉, 3가지 방법이 있음. 3번째는 별도로 수입 진행-나중에)
+            // 1. 리터럴 객체 [ 객체를 생성하면서 설계하는 방식 ]
+            var person= {
+                // 멤버변수 - 속성(property)
+                name:"sam",
+                age: 20,
+
+                // 멤버함수 - 메소드(method)
+                show: function(){
+                    //document.write("aaa");                   
+                    //document.write( name+" , " + age +"<br>" ); // JS에서는 멤버변수를 사용할 때 반드시 this키워드 필요!!
+                    document.write("name : " + this.name +" "+"age : "+ this.age +"<br>");
+                }
+
+                //function show(){} //ERROR - 일반적인 함수선언문 사용못함
+            };
+
+            //객체 멤버(속성) 출력
+            document.write( person +"<br>" );
+            document.write( person.name +"<br>"  );
+            document.write( person.age +"<br>");
+
+            //객체 메소드 호출
+            person.show();
+
+            // 새로운 리터럴 객체를 만드려면 다시 생성 및 설계
+            var person2={
+                //멤버변수 - 속성(프로퍼티)
+                name:"robin",
+                age:25,
+
+                //멤버함수 - 메소드
+                show: function(){
+                    document.write("show : " + this.name +", "+this.age+"<br>");
+                },
+
+                //멤버함수 - 파라미터 가능
+                add: function(a, b){
+                    var c= a+b;
+                    document.write("add : " + c +"<br>");
+                }
+            }
+
+            person2.show();
+            person2.add(5, 3);
+
+            person2.show(5, 3); //파라미터 없는데 줘도 상관없음.
+            // person.add(5,3); //없는 메소드를 호출하면? 에러: 이 줄 다음부터 동작안함
+            // document.write("aaa");
+
+            // JS객체는 유연하기때문에 객체생성 후
+            // 객체 속성과 메소드를 추가할 수 있음.
+            person.tel="01012345678"; //property 추가
+            document.write("name : " + person.name+", ");
+            document.write("age : " + person.age+", ");
+            document.write("tel : " + person.tel+"<br>");
+
+            //메소드 추가
+            person.out= function(){
+                document.write("out:"+ this.name+", "+this.age+", "+this.tel+"<br>");
+            }
+            person.out();
+
+            //값을 대입하지 않은 멤버변수(프로퍼티)를 출력하면?
+            document.write(person.addr); //undifined
+
+            document.write("<hr>");
+
+            // 2. 생성자함수를 이용한 방법 [new 키워드로 객체 생성] - native언어들과 비슷한 기법
+            //객체 설계도면(마치 class같은)
+            function Student(){
+                //멤버변수 -속성(프로퍼티)
+                this.name= "aaa";
+                this.age= 23;
+                this.major="android";
+
+                //멤버함수 - 메소드
+                this.show= function(){
+                    document.write("student show : "+ this.name+", "+this.age+", "+this.major+"<br>");
+                }
+
+                addr= "seoul"; //이건 멤버변수가 아니라 전역변수임
+                var aaa="aaa"; //이건 지역변수
+
+                //멤버변수의 값을 대입해주는 메소드
+                this.setMembers= function(name, age, major){
+                    this.name= name;
+                    this.age= age;
+                    this.major= major;
+                }
+            }
+
+            //생성자함수로 설계된 객체 생성 [new 키워드]
+            var s= new Student();
+            s.show();
+            document.write("addr : " + s.addr +"<br>"); //undefined
+            document.write("addr : " + addr +"<br>"); //seoul
+
+            // 또다른 객체를 만들때 다시 설계할 필요 없음
+            var s2= new Student();
+            s2.name="bbb";
+            s2.age= 25;
+            s2.major="front end"
+            s2.show();
+
+            //멤버변수를 하나씩 대입하면 짜증남.
+            //멤버변수의 값을 대입해 주는 메소드 호출
+            var s3= new Student();
+            s3.setMembers("ccc", 30, "web");
+            s3.show();
+
+            // 객체를 생성하면 반드시 값을 대입하는 메소드를 실행해야 하므로
+            // 항상 한줄을 더 쓰게됨. 그래서 객체를 생성할 때 곧바로
+            // 값을 전달하면 더 편하겠죠..
+            // 객체생성시에 자동으로 호출되는 메소드 : 생성자메소드(constructor)
+            function Stu(name, age, major){
+                this.name= name;
+                this.age= age;
+                this.major= major;
+                this.show= function(){
+                    document.write("Stu:"+ this.name+", "+this.age+", "+this.major+"<br>");
+                }
+
+                //getter, setter메소드
+                this.getName= function(){
+                    return this.name;
+                }
+
+                this.setName= function(name){
+                    this.name= name;
+                }
+
+            }
+
+            var stu= new Stu("kim", 28, "hybrid");
+            stu.show();
+
+            var stu2= new Stu(); //값을 안주면?
+            stu2.show();
+
+            //자바에서 처럼
+            //getter, setter 메소드 만들기도 함.
+            var name= stu.getName();
+            document.write(name +"<br>");
+
+            ///////////// 추가적인 내용들 ////////////
+
+            //in키워드 : 연산자
+            document.write( 'name' in stu2 ); //name 속성이 있으면 true
+            document.write("<br>");
+            document.write( 'addr' in stu2 ); //addr 속성이 없어서 false
+
+            //객체의 멤버로 다른 객체 있을 수 있음
+            document.write("<hr>");
+            var flight= {
+                airline: 'Korean air',
+                number: 777,
+                arrival:{
+                    nation:"japan",
+                    city:"tokyo"
+                }
+            }
+
+            document.write( flight.arrival.city +"<br>" );
+            //리터럴객체의 멤버를 연관처럼 접근하는 것도 가능함.
+            document.write( flight.airline +"<br>");
+            document.write( flight['airline'] +"<br>");
+
+            // Object.create() : 객체 clone기능
+            var p1={
+                name:"aaa",
+                age:20,
+                show:function(){
+                    document.write(this.name+", "+this.age+"<br>");
+                }
+            }
+
+            //clone...
+            var p2= Object.create(p1);
+
+            p1.show();
+            p2.show();
+
+            p2.name="bbb";
+            p2.age=30;
+
+            p1.show();
+            p2.show();
+
+
+        </script>
+
+    </head>
+    <body>
+        
+    </body>
+</html>

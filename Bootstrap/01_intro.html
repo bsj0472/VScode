@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS Library : Bootstrap -->
+    <!-- 1. 다운로드 방식 -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+
+    <!-- 2. CDN방식 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- popup 기능 같은 특수기능을 사용하고 싶다면 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <button class="btn btn-primary">button</button>
+
+    <!-- 벽에 너무 붙어 있는게 싫으면 -->
+    <div class="container" style="text-align: center; padding-top: 16px;">
+        <button class="btn btn-secondary">button</button>
+        <button class="btn btn-success">button</button>
+    </div>
+
+    <!-- 가장 많이 사용하는 테이블작업을 좀 쉽게 (게시판 모양) -->
+    <table class="table table-hover mt-3">
+        <tr>
+            <th>no</th>
+            <th>name</th>
+            <th>message</th>
+            <th>date</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>sam</td>
+            <td>Hello bootstrap</td>
+            <td>2021.03.23</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>robin</td>
+            <td>Nice to meet you</td>
+            <td>2021.03.24</td>
+        </tr>
+    </table>
+    <!-- 게시판의 페이지번호 : pagination -->
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a href="aaa.php?page=1" class="page-link">1</a></li>
+        <li class="page-item"><a href="aaa.php?page=2" class="page-link">2</a></li>
+        <li class="page-item"><a href="aaa.php?page=3" class="page-link">3</a></li>
+        <li class="page-item"><a href="aaa.php?page=4" class="page-link">4</a></li>
+        <li class="page-item"><a href="aaa.php?page=5" class="page-link">5</a></li>
+    </ul>
+
+    <!-- 쇼핑몰 같은 곳에서 자주보는 Card형태의 컴포넌트 -->
+    <div class="card ml-3 mb-5" style="width: 20rem; margin-left: 16px;">
+        <img src="./image/newyork.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">NEW YORK</h5>
+            <p class="card-text">new york is goood</p>
+            <a href="" class="btn btn-info">Go NY</a>
+        </div>
+    </div>
+
+    <div class="card ml-3 mb-5" style="width: 20rem; margin-left: 16px;">
+        <img src="./image/sydney.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Sydeney</h5>
+            <p class="card-text">Sydeney is goood</p>
+            <a href="" class="btn btn-info">Go Sydeney</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="card ml-3 mb-5" style="width: 20rem; margin-left: 16px;">
+                <img src="./image/newyork.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">NEW YORK</h5>
+                    <p class="card-text">new york is goood</p>
+                    <a href="" class="btn btn-info">Go NY</a>
+                </div>
+            </div>
+        
+            <div class="card ml-3 mb-5" style="width: 20rem; margin-left: 16px;">
+                <img src="./image/sydney.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Sydeney</h5>
+                    <p class="card-text">Sydeney is goood</p>
+                    <a href="" class="btn btn-info">Go Sydeney</a>
+                </div>
+            </div>
+            <div class="card ml-3 mb-5" style="width: 20rem; margin-left: 16px;">
+                <img src="./image/newyork.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">NEW YORK</h5>
+                    <p class="card-text">new york is goood</p>
+                    <a href="" class="btn btn-info">Go NY</a>
+                </div>
+            </div>
+        
+            <div class="card ml-3 mb-5" style="width: 20rem; margin-left: 16px;">
+                <img src="./image/sydney.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Sydeney</h5>
+                    <p class="card-text">Sydeney is goood</p>
+                    <a href="" class="btn btn-info">Go Sydeney</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JSON parsing</title>
+
+        <script>
+
+            // JSON 문자열을 객체로 파싱
+            var s= '{"name":"kim", "age":20}';
+
+            //json->object
+            var person= JSON.parse(s);
+            document.write( person.name+", "+person.age +"<br>");
+
+            // jsonArray 문자열 파싱
+            var jsonArray='[{"name":"kim", "age":20},{"name":"robin", "age":25}]';
+
+            var persons= JSON.parse(jsonArray);
+            //persons는 배열임
+            for(var i=0; i<persons.length; i++){
+                document.write(persons[i].name+", "+persons[i].age+"<br>");
+            }
+
+            //json객체의 값이 또 다른 json객체
+            var json='{"name":"hong", "age":20, "addr":{"nation":"korea","city":"seoul"} }';
+            var p= JSON.parse(json);
+            document.write( p.name +"<br>" );
+            document.write( p.age +"<br>");
+            document.write( p.addr.nation +"<br>");
+            document.write( p.addr.city +"<br>");
+
+            // JS객체 -> json문자열로 변환
+
+            //JS객체
+            var stu= {
+                name:"lee",
+                age: 30,
+                major:"android"
+            }
+
+            //객체 to json
+            var j= JSON.stringify(stu);
+            document.write(j +"<br>");
+
+
+            objArr=[
+                {name:"sam", age:20},
+                {name:"robin", age:25},
+                {name:"kim", age:30},
+            ];
+
+            var ja= JSON.stringify(objArr);
+            document.write(ja +"<br>");
+
+
+            var p2= {
+                name:"park",
+                age:35,
+                addr:{
+                    nation:"japan",
+                    city:'tokyo'
+                }
+            };
+
+            var g= JSON.stringify(p2);
+            document.write(g+"<br>");
+
+
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

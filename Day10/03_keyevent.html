@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>key event</title>
+    </head>
+    <body onkeypress="aaa()">
+        아무 키나 입력해 보세요.
+        <br><input type="text" id="key1">
+        <br><input type="text" id="key2">
+        <br>Shift키 <input type="checkbox" id="aa">
+    </body>
+    <script>
+        function aaa(){
+            //눌러진 키보드의 키값을 얻어오기
+            var keyCode= window.event.keyCode; //문자번호
+
+            document.getElementById('key1').value= keyCode;
+            document.getElementById('key2').value= String.fromCharCode(keyCode);
+            document.getElementById('aa').checked= event.shiftKey;
+        }
+    </script>
+</html>

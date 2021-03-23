@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Box Model test</title>
+
+        <!-- 내부스타일시트 적용 -->
+        <style>
+            /* 이 영역안에서는 CSS문법체계 따름 */
+
+            p.border{
+                /* 경계선 스타일(별도 두께 지정없어도 기본 3px) */
+                border-style: solid;
+                /* top,right,bottom, left 로 나누어 스타일 가능 */
+                border-top-style: dotted;
+
+                /* 경계선 두계 px, thick, medium, thin */
+                border-width: 3px;
+                border-bottom-width: 8px;
+
+                /* 색상 */
+                border-color: red;
+                border-left-color: blue;
+
+                /* 모서리 둥글게 */
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 0px;
+                
+                /* 경계선 축약형 */
+                border: 30px solid green;
+
+                /* 경계선 이미지 */
+                border: 30px solid transparent;/*투명색*/
+                border-image-source: url("border.png");
+                border-image-slice: 30 30;/*높이, 너비*/
+                border-image-repeat: round;
+                /* round : 동일하게 반복하는 이미지 */
+                /* stretch : 쭉 늘려주는 이미지 */
+
+                /* 요소크기(블럭요소만 가능한 속성) */
+                width: 70%;
+                height: 400px; /*높이는 기본적으로 %단위 적용되지 않음(부모사이즈가 고정되지 않아서*/
+
+                /* 요소의 중앙정렬  : 블럭요소만 가능한 설정*/
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+
+            /* 인라인요소는 기본적으로 크기조정이 안됨 */
+            a{background-color: red; width: 200px;}
+            em{background-color: aqua; width: 50%;}
+
+            /* 인라인요소중에서 너비 조정이 가능한 요소 : 인라인 블럭요소 */
+            img{width:  500px; border: 1px solid black;}
+            input{background-color:  aqua; width: 100%;}
+
+            /* 마진 연습 */
+            /* 마진은 서로 겹침 */
+            #p1{background-color: red; height: 50px; margin: 0px; margin-bottom: 10px;}
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: 10px;}
+
+            /* 심지어 음수 마진도 있으며 음수마진을 주면 겹침 */
+            #p1{background-color: red; height: 50px; margin: 0px; }
+            #p2{background-color: green; height: 50px; width: 50%; margin: 0px; margin-top:  -20px;}
+
+            /* 배경 */
+            #background{
+                background-color:rgb(163, 230, 163);
+                background-image: url("image.png");
+                background-size: 200px 100px;
+                background-repeat: repeat; /*기본*/
+                background-repeat: repeat-x;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-position: right top;
+                background-position: top center;
+
+                /* 축약형 : (색상) (이미지) (repeat) (위치) */
+                background: rgb(250, 149, 112) url("image.png") no-repeat center;
+
+                /* 마진 축약형 */
+                margin: 20px; /*상하좌우 모두 20px*/
+                padding: 30px 25px 20px 10px; /*top right botton left : 시계방향*/
+
+            }
+
+            
+                /* 배경이미지의 붙어있는 위치 설정 */
+                p#attachment{
+                    width: 60%;
+                    height: 300px;
+                    border: 2px solid blue;
+                    overflow: scroll;
+                    margin-left: auto; margin-right: auto;
+
+                    background-image: url("./image.png");
+                    background-size: 200px 100px;
+                    background-repeat: no-repreat;
+                    background-position: center;
+                    background-attachment: scroll; /*기본 : 요소를 기준으로 이미지 위치 지정 - 콘텐츠가 스크롤되어도 이 p영억의 배경은 항상 배경의 포지션을 유지함*/
+                    background-attachment: local; /* 요소의 콘텐츠를 기준으로 이미지 위치 지정-콘텐츠가 스크롤되면 이미지도 같이 움직이는 것처럼 보임*/
+                    background-attachment: fixed; /* 브라우저의 스크롤 위치 기준- 단 p요소의 배경이기에 p요소밖에서는 보이지 않음*/
+                }
+
+        </style>
+
+
+    </head>
+
+    <body>
+        <!-- 경계선 border/ 요소크기 / 중앙정렬 -->
+
+        <p class="border">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla deserunt optio mollitia consequatur in excepturi! Accusamus expedita neque quas harum mollitia, deserunt, deleniti magni voluptates aliquid delectus similique possimus explicabo?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem repellendus laborum incidunt animi ipsa provident blanditiis cupiditate doloribus reiciendis modi laudantium, totam fugiat labore iste delectus quod consectetur. Aperiam, facilis!
+        </p>
+
+        <!-- 인라인요소 : 너비조정 불가능 -->
+        <a href="">NAVER</a>
+        <em>sadfsadfsadfsdf</em>
+
+        <img src="./back.jpg">
+        <input type="text">
+
+        <!-- margin -->
+        <div class="margin">
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>    
+        </div>
+
+        <!-- 배경 -->
+        <p id="background">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, ratione consectetur alias sunt, at repudiandae error iusto ipsam distinctio inventore odit earum quidem quisquam tempora rerum, totam enim fugiat eum?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, perferendis aliquid? Accusamus officiis aperiam, optio repellat quia maxime sed placeat et ex assumenda, ipsam numquam aspernatur error laboriosam magni quasi?
+
+        </p>
+
+        <!-- background attachment -->
+        <p id="attachment">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis soluta voluptatem eum reprehenderit quos tempore, consectetur eos odit fugiat sapiente beatae voluptate doloribus, totam cupiditate repellat a itaque. Nam, nobis!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga iste neque animi fugiat cum voluptatibus ab impedit repellat, aliquam rem ratione repellendus distinctio! Perspiciatis officia beatae vero iure doloremque repudiandae.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo voluptate repudiandae amet nesciunt ab, veniam eaque atque veritatis nulla architecto hic? Similique, praesentium reprehenderit asperiores adipisci eos totam accusamus voluptatem?
+
+        </p>
+
+
+
+    </body>
+</html>

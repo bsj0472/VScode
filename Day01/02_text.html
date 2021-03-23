@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>text example</title>
+    </head>
+    <body>
+        이 곳에 글씨를 쓰면 브라우저에 보입니다.
+        두번째 줄입니다. 띄어쓰기도 ..           어차피 한개만 적용됨.
+        특수문자 : ~!@#$%^&*()_+|{}"'?/ 다 잘나옴.. 
+        다만, 주의할 점 <  > 이런 태그들은 태그명과 혼동되므로..
+        특수문자 전용 entity code 사용을 권장함.
+
+        <!-- 앤티티 코드 [ &xxx;] -->
+        &excl;&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&yen;&gt;&lt;
+
+        <!-- 한 단락(위아래 마진이 있는 영역 만들어주는 요소) -->
+        <p>단락요소는 자동으로 한 줄을 차지하게 됨</p>
+        <p>당연하게 이것은 <p>요소안에 요소가 배치될 수 있음</p>두번째 단락이므로 자동 줄 바뀌어 보여짐</p>
+        
+        <!-- 종료태그가 없어도 되지만 권장하지는 않음 -->
+        <p>종료태그 없음.
+
+        <pre>
+            이 영역안에서는 쓴데로 보여짐.
+            이렇게 줄바꿈도 그댜로 적용됨.
+            띄어쓰기도          그대로.......
+            스타일이 전혀 달라서 잘 사용하지 않고.. 검색기능에서도 제한이 있음
+        </pre>
+
+        <!-- 주요 제목 요소 -->
+        <h1>This is Heading Element</h1>
+        <h2>This is Heading Element</h2>
+        <h3>This is Heading Element</h3>
+        <h4>This is Heading Element</h4>
+        <h5>This is Heading Element</h5>
+        <h6>This is Heading Element</h6>
+
+        <!-- 존재하지 않는 요소명(h7)을 사용하면 그 태그는 무시되고 콘텐츠만 보여짐 -->
+        <h7>This is Heading Element</h7>
+
+        <!-- 텍스트 서식 -->
+        <p>텍스트 서식 <strong>강하게</strong> 입니다.</p>
+        <p>텍스트 서식 <em>강조</em> 입니다.</p>
+
+        <!-- 수평실선 [start tag 만 있는 요소  : 콘텐츠가 없는 요소 - empty element]-->
+        <hr>
+
+    </body>
+</html>

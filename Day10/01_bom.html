@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BOM</title>
+    </head>
+    <body>
+        <!-- BOM(Browser Object Model) -->
+        <!-- 1. window : 최상위 객체 -->
+
+        <!-- 주요 기능 메소드들 -->
+        <!-- 1) open, close -->
+        <button onclick="aaa()">naver</button>
+        <script>
+            function aaa(){
+                //window.open('http://www.naver.com'); //기본 _blank
+                //window.open('http://www.naver.com', '_self');//target
+
+                //옵션들(specs)
+                //새로운 창의 너비,높이 지정
+                //window.open('http://www.naver.com', '_blank','width=300, height=200');
+                var specs= 'width=500, height=200, left=200, top=150, resizable=no';
+                window.open('http://www.naver.com', '_blank', specs);
+            }
+        </script>
+
+        <!-- 빈 윈도우 띄우기 -->
+        <button onclick="bbb()">message window</button>
+        <script>
+            function bbb(){
+                var win= window.open('','','width=500, height=200, left=200, top=150');
+                win.document.write("<h3>Hello world!!</h3>");
+                win.document.write("<p>This window is message window</p>");
+            }
+        </script>
+
+        <!-- 윈도우 닫기 -->
+        <button onclick="ccc()">close window</button>
+        <script>
+            function ccc(){
+                //최상위 객체인 window는 생략이 가능함!
+                //window.close();                
+                close();                
+            }
+        </script>
+
+        <!-- 새창 열고 닫기 -->
+        <button onclick="ddd()">open</button>
+        <button onclick="eee()">close</button>
+        <script>
+            function ddd(){
+                //var 키워드 없이 만들어진 win변수는 전역변수
+                win= open('','','width=500, height=200');
+                win.document.write("aaaaaa");
+            }
+
+            function eee(){
+                win.close();
+            }
+        </script>
+
+        <!-- 윈도우 이동 -->
+        <hr>
+        <h4>moveTo, moveBy</h4>
+        <button onclick="ooo()">open window</button>
+        <button onclick="mmm()">move window</button>
+        <script>
+            function ooo(){
+                w=open('','','width=500, height=200');
+                w.document.write('오늘의 특가 제품입니다!!');
+                w.moveTo(300, 100); //특정 위치로 이동
+            }
+
+            function mmm(){
+                w.moveBy(10, 10); //현재위치 기분으로 얼마만큼 이동
+                w.focus();
+            }
+        </script>
+
+        <hr>
+        <!-- 특정함수를 일정시간 후에 실행되도록 설정 -->
+        <h4>setTimeout, setInterval, clearInterval</h4>
+        <button onclick="showAlert()">3초 후 경고창 띄우기</button>
+        <script>
+            function showAlert(){
+                setTimeout( function(){
+                    alert("3초 경과!!");
+                }, 3000 );
+            }
+        </script>
+
+        <br>
+        <input type="text" id="in1" value="0">
+        <button onclick="startCount()">1초 카운트 증가!</button>
+        <button onclick="stopCount()">반복종료</button>
+        <script>
+
+            function show(){
+                var e= document.getElementById('in1');
+                //e.value= e.value+1;
+                e.value= parseInt(e.value) + 1;
+            }
+
+            function startCount(){                
+                a= window.setInterval( show ,1000);
+            }
+
+            function stopCount(){
+                clearInterval(a);
+            }
+        </script>
+
+        <!-- window객체의 기타 유용한 메소드들 -->
+        <hr>
+        <script>
+            //인코딩 함수
+            //웹주소 URL은 한글,특수문자, 띄워쓰기 등이 금지되어 있음.
+            //그래서 만약 이런 문자가 포함된다면 URL에 사용이 가능한 형태로 문자를 변환해야 함
+            //이를 자동으로 해주는 메소드
+
+            var a= encodeURI('http://www.test.com/my folder/가.html');
+            document.write(a+"<br>");
+
+            //암호화된(인코드) URL을 다시 원본으로 해독하기(디코드)
+            var b= decodeURI(a);
+            document.write(b+"<br>");
+
+
+            // eval() - 문자열을 js코드로 해석
+            var x="10+2*6";
+            document.write(x +"<br>");
+            var z= eval(x);
+            document.write(z +"<br>");
+
+            // NaN : 값이 숫자(number)가 아닌지 여부를 리턴
+            document.write( isNaN(10) +"<br>" );//숫자이므로 false
+            document.write( isNaN('10') +"<br>" );//숫자가 될 수 있으므로 false
+            document.write( isNaN("hello") +"<br>" );//숫자가 될 수 없기에 true
+
+            //사용자 입력값 parseInt()할 때 사용
+            // if( isNaN(e.value) ) alert('숫자만 입력가능함'); 
+            // else var a= parseInt(e.value);
+
+            // 유한한 숫자인가
+            document.write( isFinite(10) +"<br>"  );//유한한 숫자이므로 true
+            document.write( isFinite(10/0) +"<br>"  );//무한대 : infinite
+
+
+        </script>
+
+    
+
+        <!-- 2. document : 웹페이지의 문서객체 - 원래 표기법은 window.document 가 정식표기, 단, window는 생략가능하기에 안씀-->
+        <!-- 이미 많이 사용할 것이이서 패스 -->
+
+        <!-- 3. screen : 화면사이즈 및 color정보 -->
+        <hr>
+        <h2>screen 객체</h2>
+        <script>
+            //모니터 화면 해상도
+            document.write( "화면 해상도 : " + screen.width+", "+screen.height +"<br>" );
+            document.write("작업표시줄 제외 사이즈 : " + screen.availWidth+", "+screen.availHeight+"<br>");
+
+            function fullWindow(){
+                var specs='width='+screen.availWidth+", height="+screen.availHeight;
+                w= open('','',specs);
+            }
+
+        </script>
+        <button onclick="fullWindow()">전체화면 윈도우</button>
+
+        <!-- 브러우저 윈도우 사이즈는? window객체에게 물어볼것 -->
+        <script>
+            document.write('브라우저 document영역 사이즈 : ' + window.innerWidth+", "+ innerHeight+"<br>");
+            document.write('브라우저 전체 사이즈 : ' + window.outerWidth+", "+ outerHeight+"<br>");
+        </script>
+
+        <!-- 4. location : URL 정보 -->
+        <hr>
+        <h2>location 객체</h2>
+        <script>
+            //location객체의 주요속성(멤버변수)
+            document.write( location.href +"<br>" );
+            document.write( location.protocol +"<br>"  );
+            document.write( location.pathname +"<br>"  );
+        </script>
+
+        <!-- 앵커처럼 새로운 문서를 열기 -->
+        <button onclick="www()">새로운 문서 열기</button>
+        <button onclick="eee()">현재문서 다시 열기:새로고침</button>
+        <button onclick="rrr()">새로운 문서로 대체해서 열기</button>
+        <script>
+            function www(){
+                //location.assign('http://www.naver.com');//뒤로가기 있음.
+                location.href="http://www.naver.com"; //이 방식을 더 선호함
+            }
+
+            function rrr(){
+                location.replace('http://www.naver.com');//뒤로가기 없음.
+            }
+
+            function eee(){
+                location.reload('http://www.naver.com');//새로고침
+            }
+        </script>
+
+        <!-- 5. histroy : 방문한 URL 정보 -->
+        <hr>
+        <h2>history 객체</h2>
+        <script>
+            document.write('방문한 페이지 수 : ' + history.length +"<br>");
+
+            function ttt(){
+                history.back();
+            }
+
+            function yyy(){ history.forward(); }
+            function uuu(){ history.go(-2);  }
+        </script>
+        <button onclick="ttt()">뒤로</button>
+        <button onclick="yyy()">앞으로</button>
+        <button onclick="uuu()">2칸 뒤</button>
+        
+        <!-- 6. navigator : 브라우저 정보 -->
+        <hr>
+        <h2>navigator 객체</h2>
+        <script>
+            //사용하는 브라우저의 정보 얻어오기
+            document.write("브라우저 코드명 : " + navigator.appCodeName +"<br>");
+            document.write("브라우저 종류 : " + navigator.appName +"<br>");
+            document.write("브라우저 버전 : " + navigator.appVersion +"<br>");
+            document.write("브라우저 플랫폼 : " + navigator.platform +"<br>");
+            document.write("브라우저 에이전트 : " + navigator.userAgent +"<br>");
+        </script>
+    </body>
+</html>

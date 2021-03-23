@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Prototype</title>
+
+        <script>
+
+            // 리터럴객체든, 생성자함수를 이용한 객체든 모두 멤버메소드를 객체마다 보유하고 있음.
+            // 같은 객체자료형 마다 메소드가 하나마 존재도록 하는 기법 : prototype
+            function Person(name, age){
+                this.name= name;
+                this.age= age;
+            }
+
+            // Person자료형에 하나만 존재하는 메소드(자바에서는 당연한...) 추가
+            Person.prototype.show= function(){
+                document.write("Person: "+ this.name+", "+ this.age+"<br>");
+            }
+
+            var p1= new Person("sam", 20);
+            var p2= new Person("robin", 30);
+
+            p1.show();
+            p2.show();
+
+            // protype 메소드는 여러개 추가도 가능함
+            Person.prototype.getName= function(){
+                return this.name;
+            }
+            document.write("name : "+ p2.getName()+"<br>");
+
+            //자바에서의 클래스변수(static변수) 같은 역할도 가능함
+            Person.prototype.addr= "seoul";
+            document.write(p1.addr+"<br>");
+            document.write(p2.addr+"<br>");
+
+            //값을 넣을때는 조심
+            p2.addr="busan";//이건 prototype을 건드린것이 아니라 p2에 addr이라는 인스턴스 속성이 추가된 것임.
+            Person.prototype.addr="incheoun"; //프로토타입변수를 건드리는 코드
+            document.write(p1.addr+"<br>");
+            document.write(p2.addr+"<br>");
+
+            //객체에 대한 마무리../////////////////
+            document.write("<hr>");
+
+            //지역변수를 멤버변수의 초기값으로 대입 가능함
+            function Car(model, color){
+
+                var abc=4; //지역변수 (멤버변수 아님)
+
+                this.model= model;
+                this.color= color + abc;
+            }
+
+            var c= new Car("aa", 10);
+            document.write(c.abc+"<br>");
+            document.write(c.color+"<br>");
+
+            //Object 클래스의 존재 -모든 객체가 가지는 기본 최상위클래스(객체)
+            document.write( c +"<br>"); //<--객체를 출력하면 자동 toString()가 발동됨
+            document.write( c.toString() +"<br>" );
+
+            // toString을 오버라이드 할 수도 있음.
+            c.toString= function(){ //새로운 함수를 대입
+                document.write("새로운 toString()....");
+            }
+
+            c.toString();
+
+
+           
+
+
+
+        </script>
+
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>부모 사이즈에 대한 연습</title>
+
+        <style>
+
+            *{border: 1px dotted red;}
+
+            p{padding: 20px;}
+
+            a{padding: 10px; margin: 10px;}
+            em{padding: 20px;}
+
+            input{margin: 10px;}
+
+        </style>
+
+    </head>
+    <body>
+        <!-- 부모요소box의 height이 언제나 자식의 높이를 감싸지 않을 수 있음. -->
+        <div style="border: 1px dotted blue;">
+            <!-- 자식요소가 block요소라면 그만큼 부보의 height도 감싸는 사이즈가 됨 -->
+            <p>Hello</p>
+        </div>
+
+        <hr>
+
+        <div style="background-color: khaki; border: 1px dotted blue;">
+            <!-- 자식요소로 inline요소 배치 -->
+            <!-- 인라인요소의 padding을 주어도 부모요소의 높이값이 커지지 않음 -->
+            <a href="">nice</a>
+            <em>good</em>
+            <strong>html</strong>   
+            
+            <!-- 인라인 블럭요소 -->
+            <input type="text">
+        </div>
+
+    </body>
+</html>

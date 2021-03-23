@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 모듈 : 다른 js문서의 클래스나 변수들을 가져와서 사용하는 기법 -->
+    <!-- 현업에서는 이런 Module을 만들어놓고 필요할때 재사용하면서 프로그램을 완성함- 제작속도 향상 -->
+
+    <!-- 다른 문서의 내용을 가져올때 사용하는 키워드 : import, export(다른 문서에서 사용할 수 있도록 추출) -->
+    <!-- 현재는 import와 export라는 문법을 일반 로컬 브라우저에선 실행되지 않음. 즉, 서버에 올려야만 실행가능함 -->
+    <!-- 리액트네이티브(하이브리드 앱)는 node.js라는 자바스크립트 컴파일러를 사용하는데 이를 사용하면 서버 없어도 동작함 -->
+    <!-- <script src="./module.js"></script> -->
+
+    <!-- 모듈은 js에서 다른 js를 부를 때 사용하는 기법 -->
+    <script type="module">
+        import show from './module.js';
+
+        //default가 아닌 녀석을 import 할때는 마치 구조분해할당처럼
+        import {add} from './module.js';
+        import {age, name} from './module.js';
+
+        //위 3개를 줄여서
+        import show, {add, age, name} from './module.js';
+
+        //혹시 import할때 이름을 다르게 하고 싶다면
+        import show, { name as nm, add as sum} from './module.js';
+
+        show();//다른 문서의 show()함수
+        let c= add(5, 3);
+        document.write(age+"<br>");
+        document.write(name+"<br>");
+        document.write(nm+"<br>");
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

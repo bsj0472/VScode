@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Number</title>
+        <script>
+
+            //2.Number 생성자 함수 .. (Java의 Wrapper클래스와 비슷.. Integer)
+
+            //수치형과 Number는 다름
+            var a=10; //수치형
+            var b= new Number(10);//객체형 
+
+            document.write(typeof(a)+"<br>");
+            document.write(typeof(b)+"<br>");
+            document.write((a===b)+"<br>");//자료형이 다르기에 false
+
+            //Number객체의 기능들(메소드들)
+            var num=new Number(123.456);
+            
+            //1)지수표현식
+            document.write(num.toExponential() +"<br>");
+            document.write(num.toExponential(2) +"<br>");//소수점 2자리까지
+
+            //2) 소수점 자르기(고정소수점 방식)
+            document.write(num.toFixed() +"<br>");
+            document.write(num.toFixed(2) +"<br>");//소수점 2자리까지
+
+            //3) 진법 변환 표기
+            var num= new Number(10);
+            document.write(num.toString()+"<br>"); //10진법
+            document.write(num.toString(16)+"<br>"); //16진법
+            document.write(num.toString(8)+"<br>"); //8진법
+            document.write(num.toString(2)+"<br>"); //2진법
+
+            //수치형은 Number 객체로 자동 wrapping 됨
+            var a= 255;
+            document.write(a.toString(16)+"<br>");
+
+            //심지어 변수에 넣지 않은 리터럴 상수 수치값도 wrapping 됨
+            //단, 소수점 표기가 있을때만....
+
+            document.write(10.54321.toFixed(2) +"<br>");
+            //document.write(10.toString(2)+"<br>");//error
+            document.write(10.0.toString(2) +"<br>");
+
+
+
+            
+        </script>
+    </head>
+</html>

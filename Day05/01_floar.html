@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>float test</title>
+        <style>
+            #a{width: 160px;
+                height: 120px;
+                float: left;
+                /* padding: 0px 20px 20px 0px; */
+                margin: 10px;
+               
+            }
+
+        </style>
+    </head>
+
+    <body>
+        
+        <img src="./sunshine.jpg" alt="sunshine" id="a">
+
+        <p style="border: 1px solid red; ">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae nostrum voluptatibus sint quibusdam necessitatibus eligendi minus reprehenderit atque aspernatur modi esse fugiat dignissimos ut facere et, cum voluptate, voluptatem dolor!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates reiciendis tenetur rerum autem omnis labore, quas aspernatur repellendus in at assumenda eum ipsam libero possimus sed nisi beatae, quam aliquam!
+
+        </p>
+
+        <!-- 위 float 속성의 영향을 받지 않으려면 -->
+        <p style="clear: left;">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis quidem reprehenderit deserunt dolores fuga nobis ad expedita minima, odit totam quas, error mollitia tenetur nulla! Officiis ad ullam accusamus ipsa!
+
+        </p>
+
+        <hr>
+
+        <!-- 자식요소에 float를 사용할때 부모요소의 높이값 주의!! -->
+        <div style="background-color: yellow; border: 1px solid red; height: 150px;">
+            <p style="float: left;">Hello world</p>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>function test</title>
+
+        <script>
+
+            // 함수 선언 및 호출 [선언적 함수라고 부름]
+            function aaa(){
+                document.write("aaa<br>");
+            }
+
+            aaa();//JS 함수호출
+            //대부분의 함수는 특정 이벤트를 처리할 때 호출됨 (ex. button onclick- 이미 여러번 실습)
+
+            //특이한 점은 함수선언과 호출의 순서가 크게 상관없음
+            bbb();
+
+            function bbb(){
+                document.write("bbb<br>");
+            }
+
+            //다른 스크립트에 선언된 함수호출할때는 순서 중요
+            ccc(); /// 처리못함(다른 스크립트)
+            ddd(); // 처리못함(body는 무조건 head보다 나중에 하기에 인식불가)
+        </script>
+
+        <!-- 다른 스크립트 -->
+        <script>
+            bbb(); //다른 스크립트여도 순서상 bbb()함수가 먼저 선언되기에 호출 가능
+
+            function ccc(){
+                document.write("ccc<br>");                
+            }
+        </script>
+
+        <!-- 파라미터 전달 -->
+        <script>
+
+            document.write("<hr>");
+            document.write("<h4>파라미터 전달</h4>");
+
+            //인수를 받는 파라미터변수는 'var'키워드 사용금지!!-error
+            function eee(a){
+                document.write(a +"<br>");
+            }
+
+            eee(10);
+            eee("aaa");
+            eee(new Date());
+
+            //만약 인수를 전달하지 않으면?
+            eee(); // undefined
+
+            //매개변수 2개
+            function fff( a, b){
+                document.write(a+" , ");
+                document.write(b +"<br>");
+
+                if(a==undefined || b===undefined){
+                    document.write("두개의 값을 입력했어야 합니다.<br>");                    
+                    return;
+                }
+
+                var c= a+b;
+                document.write("덧셈 결과 : "+ c +"<br>");
+            }
+
+            fff( 10, 20);            
+            //fff( 100, "kim");
+            fff(10); //1개만 보내면?
+
+            //같은 함수를 또 정의하면??? -마지막에 선언된 내용으로 적용됨.
+            function eee(a){
+                document.write("새로 정의한 eee함수<br>");
+            }
+
+            eee(50);
+
+            //혹시 함수 오버로딩(Overloading) - JS는 오버로딩기술 없음!! 만약 이렇게 쓰면 함수 덮어쓰기가 된 것임.
+            // 함수 이름은 같고 파라미터 다른것.
+            function eee(a, b){
+                document.write("함수 오버로딩 시도!!!?????<br>");
+            }
+
+            eee(80, 90);
+        </script>
+
+        <!-- 리턴과 기타내용 -->
+        <script>
+            document.write("<hr>");
+            document.write("<h4>리턴과 기타내용</h4>");
+
+            function ggg(){
+                //return 10;
+                //return "aaa";
+                //return true;
+                //return 5>2;
+                return new Date();
+            }
+            var g= ggg();
+            document.write(g+"<br>");
+
+            //당현히 프로그래머가 만든 객체로 리턴 가능함
+            function hhh(){
+                return {name:"sam", age:20};
+            }
+            var p=hhh();
+            document.write( p.name+" , " + p.age+"<br>");
+        </script>
+
+        <!-- 지역변수, 전역변수 -->
+        <script>
+            document.write("<hr>");
+            document.write("<h4>지역변수, 전역변수</h4>");
+
+            //var a=10;
+            function mmm(){
+                //var a=20; //지역변수
+                a=20; //'var' 키워드 없이 변수를 만들면 자동 전역변수
+                document.write(a+"<br>");
+            }
+            mmm();
+
+            //함수안에 선언된 지역변수 사용
+            document.write(a+"<br>");
+
+            // 지역변수에서 그 지역의 범위는?? -JS는 함수가 지역임
+            for(var i=0; i<5; i++){            
+                document.write("k");
+            }
+
+            document.write(i+"<br>");
+
+            if(5>2){
+                var z=10;
+            }
+            document.write(z);
+
+        </script>
+
+        <!-- 익명함수 : Java의 익명클래스와 같은 역할. 이벤트 처리용 -->
+        <script>
+            document.write("<hr>");
+            document.write("<h4>익명함수</h4>");
+
+            //선언적함수가 아니어서 미리 함수의 존재를 알지 못함
+            //그래서 호출문이 먼저 있으면 에러
+            //show(); //error
+
+            var show= function(){
+                document.write("show<br>");
+            }
+
+            show();//변수명이 함수명]
+            show();
+
+            //변수에 함수가 대입되어 있는 값처러 여겨지기에..
+            //다른 변수에 전달하는 것이 가능함
+            var display= show;
+            display();
+
+        </script>
+
+        <!-- 함수를 매개변수 or 리턴타입으로 전달하며 사용가능 -->
+        <script>
+            document.write("<hr>");
+            document.write("<h4>익명함수</h4>");
+
+            function kkk(gg){
+                //전달받은 함수를 사용하기!!
+                gg();
+            }
+
+            //익명함수
+            var sss= function(){
+                document.write("sss function!!<br>");                
+            }
+
+            //익명함수를 다른 함수의 파라미터로 전달할 수 있음.
+            kkk(sss);
+            kkk(function(){
+                document.write("aaaaaa<br>");
+            });
+
+            //당연하게 리턴도 가능함
+            function fff(){
+                var ppp= function(){
+                    document.write("ppp function<br>");
+                }
+
+                return ppp;//함수를 리턴
+            }
+
+            var ttt= fff(); //함수호출하면 리턴으로 ppp함수가 전달됨
+            ttt();
+
+            //그래서 심지어 이런 표기법도 가능함
+            fff()();
+
+
+        </script>
+
+    </head>
+    <body>
+        <hr>
+        <h2>Body Region</h2>
+
+        <script>
+            aaa(); //실행가능
+
+            function ddd(){
+                document.write("ddd<br>");
+            }
+        </script>
+        
+    </body>
+</html>

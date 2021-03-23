@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Date 객체</title>
+
+        <script>
+
+            // 유용한 내장 생성자함수 객체들( Date, Number, String, Math, Array) -Java의 같은 이름 클래스들과 비슷한 개념
+            //1. Date
+            var a= new Date();
+            document.write(a+"<br>"); //toString() 자동호출
+            document.write(typeof(a)+"<br>");
+
+            //주요 메소드들...
+            document.write( a.toDateString() +"<br>" );
+            document.write( a.toLocaleString() +"<br>" );
+            document.write( a.getYear() +"<br>" );//1900년부터 기준 숫자 2021년 121
+            document.write( a.getFullYear() +"<br>");
+            document.write( a.getMonth() +"<br>"); //0~11
+            document.write( a.getDate() +"<br>");
+            document.write( a.getHours() +"<br>"); //0~23
+            document.write( a.getMinutes() +"<br>");
+            document.write( a.getSeconds() +"<br>");
+            document.write( a.getTime() +"<br>"); //자바 currentTimeMillis()와 같은 메소드 1970/1/1 09:00:00
+
+            // set도 가능함
+            var b= new Date(); 
+            document.write(b.toLocaleString() +"<br>");
+            b.setFullYear(2018);
+            document.write(b.toLocaleString() +"<br>");
+
+            // Date() 생성자함수 파라미터로 set 가능함
+            var c= new Date(2025, 3, 15); //2025년, 4월, 15일
+            document.write(c.toLocaleString() +"<br>");
+
+            var c= new Date("Mon Mar 15 2025 13:19:20 GMT+0900");
+            document.write(c.toLocaleString() +"<br>");
+
+            var c= new Date("2025. 3. 15");
+            document.write(c.toLocaleString() +"<br>");
+
+            var c= new Date(1547894526234);//milliseconds 값으로 설정가능
+            document.write(c.toLocaleString() +"<br>");
+
+            var c= new Date(0);//milliseconds 값으로 설정가능
+            document.write(c.toLocaleString() +"<br>");
+
+            //두 날짜 사이의 차를 계산가능
+            var a= new Date("2020. 10. 21");
+            var b= new Date();
+
+            var diff= b.getTime() - a.getTime();
+            diff= b-a; //자동 밀리초값으로 뺄셈을 수행함
+            document.write("두날짜 차이 : "+ diff +"<br>");
+
+            //차이를 millis --> 일수 차이로 변경
+            var sec= diff/1000; //밀리초 -> 초
+            var min= sec/60;    //초->분
+            var hour= min/60;   //분->시
+            var day= hour/24;   //시->일
+
+            //위 계산을 한방에
+            day= diff/(1000*60*60*24);
+            document.write("두 날차이 일수 : " + day +"<br>");
+            //소수점을 날리기!!
+            day= Math.floor(day); 
+            document.write("두 날차이 일수 : " + day +"<br>");
+
+
+            function clickBtn(){
+                //사용자가 선택할 날짜 얻어오기 위해 input요소 참조
+                var e= document.getElementById('ss');
+                var s= e.value;
+
+                var a= new Date(s); //얻어온 날짜로 Date()객체 생성
+                var b= new Date();//현재 날짜
+
+                var diff= b-a;
+                day= Math.floor( diff/(1000*60*60*24) );
+
+                if(day>0) document.write("오늘로 부터 "+day+"일 전입니다.<br>");
+                else if(day<0) document.write("오늘로 부터 "+ (-day)+"일 후입니다.<br>");
+                else document.write("오늘<br>");
+            }
+
+
+        </script>
+
+    </head>
+    <body>
+
+        <hr>
+        <input type="date" name="" id="ss">
+        <button onclick="clickBtn()">기준일 입력</button>
+
+        <hr>
+        <h4>디지털 시계</h4>
+        <button onclick="showClock()">show clock</button>
+        <input type="text" readonly id="kk">
+
+        <script>
+            function showClock(){
+                //1초마다 input요소의 value값을 변경(현재시간으로)
+
+                var s= new Date();//현재시간
+                var e= document.getElementById("kk");
+                e.value= s.toLocaleString();
+
+                //행운의 편지 보내기
+                setTimeout('showClock()', 1000);//1초 후에 showClock()실행!
+            }
+        </script>
+        
+    </body>
+</html>

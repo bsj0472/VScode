@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dom control</title>
+
+        <!-- JQuery Library 추가 : CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    </head>
+    <body>
+
+        <!-- DOM 제어 -->
+
+        <!-- 1) text(), html() : HTML요소의 콘텐츠 읽기 -->
+        <p id="p1">이 요소의 text에는 <strong>스트롱 요소</strong>가 안에 존재합니다.</p>
+        <button id="b1">text()읽기</button>
+        <button id="b2">html()읽기</button>
+        <script>
+            $('#b1').click(function(){
+                alert(  $('#p1').text()   );//Text만 읽어짐
+            });
+            $('#b2').click(function(){
+                alert(  $('#p1').html()   );//html태그도 읽어짐
+            });
+        </script>
+
+        <!-- 1.1) text(), html() : 요소안에 텍스트 쓰기 -->
+        <p id="p2">여기에 Text콘텐츠 작성하기</p>
+        <button id="b3">text() 쓰기</button>
+        <button id="b4">html() 쓰기</button>
+        <script>
+            $('#b3').click(function(){
+                $('#p2').text('텍스트 추가 <a href="">앵커요소</a>');
+            });
+            $('#b4').click(function(){
+                $('#p2').html('텍스트 추가 <a href="">앵커요소</a>');
+            });
+        </script>
+        <hr>
+
+        <!-- 2) input요소의 value값 얻기 -->
+        <input type="text" id="in1" name="aa" value="Hello world!">
+        <button id="b5">입력필드 값 읽기</button>
+        <button id="b6">입력필드 값 쓰기</button>
+        <script>
+            $('#b5').click(function(){
+                alert(  $('input#in1').val()   );
+            });
+            $('#b6').click(function(){
+                // 속성선택자
+                $('input[name=aa]').val('nice to meet you.');
+            });
+        </script>
+
+        <hr>
+        <!-- 3) 요소의 속성(Attribute)값 읽고 쓰기 -->
+        <img src="./computer.png" width="150" height="150">
+        <button id="b7">속성 읽고 쓰기 - Copy</button>
+        <img>
+
+        <script>
+            $('#b7').click(function(){
+                var src= $(this).prev().attr('src');//버튼 이전요소(img)의 src속성값 읽기
+                $(this).next().attr('src', src);
+                $(this).next().attr('width', 300);
+                $(this).next().attr('height', 200);
+            });
+        </script>
+
+        <hr>
+        <!-- 4) 요소 스타일(css) 읽고 쓰기 -->
+        <ul class="list">
+            <li style="color:red">aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+            <li id="last">ddd</li>
+        </ul>
+        <button>리스트 스타일 이동</button>
+
+        <script>
+            $curr= $('ul.list > li:first');
+
+            $('.list').next().click(function(){
+                var color= $curr.css('color');
+                $curr.css('color', '');
+
+                if( $curr.attr('id')=='last' ) $curr= $('ul.list > li:first');
+                else $curr= $curr.next();
+
+                $curr.css('color', color);
+            });
+        </script>
+
+        <hr>
+
+        <!-- 5)여러스타일을 동시에 줄때는 차라리 클래스를 통채로 하는 것이 좋음 -->
+        <style>
+            .d{
+                width: 300px;
+                height: 50px;
+                border: 1px dotted black;
+                padding: 10px;
+            }
+
+            .aaa{
+                background-color: yellow;
+                border: 2px solid red;
+            }
+        </style>
+
+        <div class="d">여기는 div영역입니다.</div>
+        <button id="b8">add class</button>
+        <button id="b9">remove class</button>
+        <button id="b10">toggle class</button>
+
+        <script>
+            $('#b8').click(function(){
+                $('div.d').addClass('aaa');
+            });
+            $('#b9').click(function(){
+                $('div.d').removeClass('aaa');
+            });
+            $('#b10').click(function(){
+                $('div.d').toggleClass('aaa');
+            });
+        </script>
+
+        <hr>
+
+        <!-- Jquery each문 -->
+        <div class="chbs">
+            <label><input type="checkbox" value="apple" name="cbs[]">apple</label>
+            <label><input type="checkbox" value="banana" name="cbs[]">banana</label>
+            <label><input type="checkbox" value="orange" name="cbs[]">orange</label>
+            <label><input type="checkbox" value="berry" name="cbs[]">berry</label>
+        </div>
+        <button id="btn11">선택완료</button>
+        <h4 id="gg"></h4>
+
+        <script>
+            $('#btn11').on('click', function(){
+                //체크되어 있는 체크박스만 선택하는 선택자
+                //var cbs= $('div.chbs input[type=checkbox]:checked');
+
+                // var str="";
+                // for(var i=0; i<cbs.length; i++){
+                //     str += cbs[i].value +", ";
+                // }
+                // $('#gg').html(str);
+
+                //Jquery each문으로 처리하면 코드가 더 짧아짐
+                var str="";
+                $('div.chbs input[type=checkbox]:checked').each(function(){
+                    str += $(this).val() +", ";
+                });
+                $('#gg').html(str);
+
+
+            });
+        </script>
+
+
+    </body>
+</html>

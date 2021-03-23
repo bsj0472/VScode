@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Array test</title>
+
+        <script>
+            //배열을 만드는 2가지 방법
+            //1. 리터럴 배열[ literal array ]
+            var arr= [10,20,30];
+            document.write( arr[0] +"<br>"  );
+            document.write( arr[1] +"<br>"  );
+            document.write( arr[2] +"<br>"  );
+
+            document.write("<br>");
+
+            //동적 자료형 언어이기에 배열 요소들의 자료형이 달라도 됨
+            var arr2= [10, "aaa", true];
+            document.write( arr2[0] +"<br>");
+            document.write( arr2[1] +"<br>");
+            document.write( arr2[2] +"<br>");
+
+            // 배열의 개수가 틀려도 에러나지 않음 ...undefined
+            document.write( arr2[3] +"<br>");
+
+            document.write("<br>");
+
+            //배열의 개수을 동적으로 변경할 수 있음.
+            //마치 ArrayList처럼
+            document.write( arr2.length +"<br>");//개수 : 3
+
+            arr2[5]=100; //새로운 요소가 추가되어 값이 저장됨
+            document.write( arr2.length +"<br>");//개수 : 6
+            document.write( arr2[0] +"<br>") ;
+            document.write( arr2[1] +"<br>") ;
+            document.write( arr2[2] +"<br>") ;
+            document.write( arr2[3] +"<br>") ;
+            document.write( arr2[4] +"<br>") ;
+            document.write( arr2[5] +"<br>") ;
+
+            document.write("<hr>");
+
+            //2. Array 객체로 배열 생성
+            var arr3= new Array(10, "sam", 30);
+            for(var i=0; i<arr3.length; i++){
+                document.write(arr3[i]+"<br>");
+            }
+            document.write("<br>");
+
+            // 개수가 0개인 배열객체를 먼저 만들고 나중에 추가도 가능
+            var arr4= new Array();
+            arr4[0]= "apple";  //수치형
+            arr4[1]= 20;       //문자형
+            arr4[2]= new Date(); //객체형
+
+            for(var i=0; i<arr4.length; i++){
+                document.write(arr4[i]+"<br>");
+            }
+            document.write("<br>");
+
+            // 연관배열 : 배열의 index번호 대신에 문자열로 구별
+            var arr5= new Array();
+            arr5["aa"]= 10;
+            arr5['bb']= 20;
+            arr5['cc']= 30;
+
+            document.write( arr5['aa'] +"<br>");
+            document.write( arr5['bb'] +"<br>");
+            document.write( arr5['cc'] +"<br>");
+            document.write("<hr>");
+
+            //리터럴 배열
+            var arr6= [];
+            arr6['aa']= 10;
+            arr6['bb']= 20;
+            document.write( arr6['aa'] +"<br>");
+            document.write( arr6['bb'] +"<br>");
+            document.write("<hr>");
+
+            //만들면서 바로 값들을 넣으려면 - 객체만드는 방법과 비슷
+            var arr7= {'aa':10, 'bb':20};
+            document.write( arr7['aa'] +"<br>");
+            document.write( arr7['bb'] +"<br>");
+
+            //연관배열의 모습이 객체와 비슷하며 실제로 메모리구조가 같음
+            //그래서 .... 이런 표기가 가능함
+            document.write( arr7.aa +"<br>" ); //멤버변수 사용하듯이 배열요소 사용
+            document.write( arr7.bb +"<br>" );
+
+            document.write("<hr>");
+
+            // 이런 연관배열과 객체의 문법적 교차사용을 잘 활용하는 예제..
+            // <form>요소와 그 안에 있는 input요소들을 제어할 때 아주 Good!!
+
+        </script>
+
+    </head>
+    <body>
+
+        <!-- forme요소와 input요소들 연관배열로 접근해보기 -->
+        <form action="" name="aa">
+            <input type="text" name="in1"><br>
+            <input type="text" name="in2"><br>
+            <input type="text" name="in3"><br>
+        </form>
+
+        <script>
+            // document객체의 멤버로 문서에 있는 form요소들을 배열로 기본 참조하고 있음.
+            document.forms[0][0].value= 10;
+            document.forms[0][1].value= 20;
+            document.forms[0][2].value= 30;
+
+            // 방번호 대신에 name속성을 키값을 사용할 수 있음.
+            document.forms['aa'][0].value=100;
+            document.forms['aa']['in2'].value= 200;
+
+            //연관배열의 키값은 객체의 멤버변수로 대체될 수 있음
+            document.aa['in3'].value= 300;
+
+            //더줄여서
+            document.aa.in1.value= "aaa";
+
+            //연관배열의 방번호는 문자열이기에 
+            //문자합성을 통해 지정도 가능함
+            for(var i=1; i<document.aa.length+1; i++){
+                document.aa['in'+i].value= i;
+            }
+        </script>
+
+        <hr>
+
+        <!-- 2차원 배열 -->
+        <script>
+
+            //2차원배열을 1차원배열을 여러개 가진 배열을 만들면 됨
+            var arr8= new Array();
+            var a1= [10,20,30];
+            var a2= ["aa","bb","cc"];
+            var a3= [true, true, 3.14];
+
+            arr8[0]= a1;
+            arr8[1]= a2;
+            arr8[2]= a3;
+
+            // document.write(arr8[0][0]);
+            // document.write(arr8[0][1]);
+
+            for(var i=0; i<arr8.length; i++){
+                for(var k=0; k<arr8[i].length; k++){
+                    document.write(arr8[i][k] +" ");
+                }
+                document.write("<br>");
+            }
+        </script>
+
+        <hr>
+        
+    </body>
+</html>

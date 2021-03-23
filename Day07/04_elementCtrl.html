@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>element control</title>
+
+        <script>
+            function cal(){
+                var in1= document.getElementById("in1");
+                var in2= document.getElementById("in2");
+
+                var a= in1.value;
+                var b= in2.value;
+
+                var c= a+b;
+                c= parseInt(a) + parseInt(b);
+
+                var result= document.getElementById("result");
+                result.value= c;
+            }
+
+            function changeColor(){
+                var e= document.getElementById("aa");
+                e.style.color="red";
+                e.style.backgroundColor="yellow";
+                e.style.border="2px solid blue";
+
+                //태그이름으로도 요소 참조 가능함
+                var es= document.getElementsByTagName("h2");
+                //es는 배열임
+                es[0].style.color="red";
+                es[0].style.backgroundColor="yellow";
+                es[0].style.border="2px solid blue";
+            }
+
+            function changeImage(){
+                //요소의 name속성값으로 요소 참조하기
+                var a= document.getElementsByName("abc");
+                //a는 배열임
+                a[0].src="./notebook.png";
+            }
+
+        </script>
+    </head>
+    <body>
+        
+        <input type="text" name="" id="in1"><br>
+        <input type="text" name="" id="in2"><br>
+        <input type="button" value="계산" onclick="cal()"><br>
+        <input type="text" name="" id="result" size="30">
+
+        <hr>
+
+        <!-- HTML요소의 특정 스타일 변경 -->
+        <h2 id="aa">This is Heading</h2>
+        <button onclick="changeColor()">change background color</button>
+
+        <hr>
+
+        <!-- 이미지 변경 -->
+        <img src="./computer.png" width="30%" name="abc">
+        <button onclick="changeImage()">change image</button>
+
+        <hr>
+
+        <!-- HTML과 JS가 혼재되어 사용 -->
+        <table border="1" style="text-align: center;">
+            <tr>
+                <td>번호</td>
+            </tr>
+
+            <!-- 여기서 반복문을 사용하기 위해 JS를 사용 -->
+            <script>
+                for(var i=0; i<10; i++){
+                    document.write("<tr><td> "+ i +"</td></tr>");
+                }
+            </script>
+
+        </table>
+
+
+    </body>
+</html>

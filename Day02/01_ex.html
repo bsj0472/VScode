@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>media ex</title>
+    </head>
+    <body>
+        <!-- 크롬브라우저는 autoplay속성을 제한하고 있어서 무시됨 - 무의미한 재생으로 데이터 낭비되기에 -->
+        <audio src="./audio/old_pop.mp3" controls="controls" autoplay="autoplay">
+            만약 브라우저에서 audio라는 태그를 인식하지 못하면 이 글씨가 보입니다.
+        </audio>
+        <!-- 브라우저에 따른 음원의 유형에 대응하기 위해 <source> 태그 사용 권장 -->
+            <!-- 속성의 이름과 값이 같을 경우 속성명만 쓰는 축약형 표기 가능 -->
+            <audio controls autoplay>
+                <source src="./audio/old_pop.mp3" type="audio/mp3">
+                    <source src="./audio/old_pop.ogg" type="audio/ogg">
+
+
+            </audio>
+            <!-- 파일형식 무료 변환 사이트 https://www.online-convert.com/ -->
+            <video src="./video/movie.ogv" controls>
+            이 브라우저에서는 video를 지원하지 않습니다.
+            </video>
+
+            <!-- 브라우저에 따른 파일형식에 대응하기 위해 -->
+            <!-- 비디오 요소는 가급적 poster,width,height을 적용 -->
+            <video controls poster="../Day01/images/coffee.gif" width="640" height="480">
+                <source src="./video/trailer.mp4" type="video/mp4">
+                <source src="./video/trailer.ogv" type="video/ogg">  <!--ogv의 MIME 타입은 ogg-->
+                 <source src="./video/trailer.mp4" type="video/mp4">
+            </video>
+
+            <br>
+            <hr>
+            <br>
+
+            <!-- iframe : inline frame - 다른 html 문서를 보여주는 요소 -->
+            <iframe src="../Day01/01_ex.html" width="300" height="150" ></iframe>
+            
+            <!-- 다른 웹사이트의 문서도 표시 가능 -->
+            <iframe src="http://mrhi2020.dothome.co.kr/index.html"></iframe>
+            <iframe src="http://mrhi.or.kr"></iframe>
+            <!-- 사이트중에서 동적웹페이지(서버에서 만든 페이지)를 만드는 사이트들을 안보일 수 있음. -->
+            <iframe src="http://naver.com"></iframe>
+
+            <!-- 경계선이 없도록 하고 싶다면 -->
+            <iframe src="../Day01/01_ex.html" frameborder="0" height="200"></iframe>
+
+            <!-- 링크요소 <a>의 target속성을  사용하여 iframe에 열리는 문서를 변경할 수 있음 -->
+                <iframe src="" frameborder="1" name="aaa"></iframe>
+                <a href="http://www.w3c.org" target="aaa">월드와이드웹 공식 사이트</a>
+
+            <br>
+            <hr>
+            <br>
+
+            <!-- div: divide- 영역 구분을 위한 요소-->
+            <div style="background-color: yellow; border:2px solid red; padding-left: 10px ;">
+                <h2>title</h2>
+                <p>this is message</p>
+            </div>
+
+            <!-- <div>의 블럭요소 특징 -->
+            <p>
+                안녕하세요. 나는 <div style="color: blue;">홍길동</div> 입니다.
+            </p>
+            <!-- <span>의 인라인요소 특징 : <div>와 같은 목적으로 사용 -->
+                <p>
+                    안녕하세요. 나는 <span style="color: blue;">홍길동</span> 입니다.
+                </p>
+
+            <!-- div를 이용해서 웹사이트의 레이아웃(배치) 구조 연습 -->
+            <div id="header" style="background-color: yellow; height: 20px;">
+                Header영역
+            </div>
+
+            <div id="content" style="background-color: green; height: 20px;">
+                Content영역
+            </div>
+
+            <div id="footer" style="background-color: gray; height: 20px;">
+                Footer영역
+            </div>
+
+    </body>
+</html>
